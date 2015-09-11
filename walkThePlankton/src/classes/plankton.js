@@ -4,6 +4,6 @@
 
 var Plankton = cc.Sprite.extend({
     ctor:function(){
-    
+        this._super(res.Plankton_png);
     }
 });

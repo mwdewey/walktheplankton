@@ -12,6 +12,7 @@
 
     "jsList" : [
         "src/resource.js",
+        "src/classes/Plankton.js",
         "src/app.js"
     ]
 }
