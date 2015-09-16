@@ -13,6 +13,11 @@
     "jsList" : [
         "src/resource.js",
         "src/classes/Plankton.js",
-        "src/app.js"
+        "src/app.js",
+        "src/classes/menuScene.js",
+        "src/classes/playScene.js",
+        "src/classes/gameplayLayer.js",
+        "src/classes/backgroundLayer.js",
+        "src/classes/overlayLayer.js"
     ]
 }
