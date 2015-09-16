@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var StartLayer = cc.Layer.extend({
     ctor:function () {
         this._super();
@@ -25,6 +26,32 @@ var StartLayer = cc.Layer.extend({
     },
     onKeyReleased:function (event){
         if(event == enumKeyCodes.KEY_B) cc.log (event);
+=======
+
+var HelloWorldLayer = cc.Layer.extend({
+    ctor:function () {
+
+        this._super();
+
+        var size = cc.winSize;
+
+        //var background = new cc.Sprite (res.background_png);
+
+        //this.addChild(background);
+
+        //background.x = size.width / 2;
+        //background.y = size.height / 2;
+
+
+        var plankton = new Plankton();
+
+
+        this.addChild(plankton);
+
+        plankton.x = 200;
+        plankton.y = 300;
+
+>>>>>>> 880d233597f28c9b08c93bf7f83f0483b7b0933d
         return true;
     }
 });

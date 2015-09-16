@@ -12,8 +12,13 @@
 
     "jsList" : [
         "src/resource.js",
+<<<<<<< HEAD
         "src/app.js",
 		"src/classes/plankton.js",
         "src/classes/enumKeyCodes.js"
+=======
+        "src/classes/Plankton.js",
+        "src/app.js"
+>>>>>>> 880d233597f28c9b08c93bf7f83f0483b7b0933d
     ]
 }
