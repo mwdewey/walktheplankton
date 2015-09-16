@@ -48,8 +48,14 @@ var HelloWorldLayer = cc.Layer.extend({
 
         this.addChild(plankton);
 
-        plankton.x = 200;
-        plankton.y = 300;
+        plankton.x = size.width/2;
+        plankton.y = size.height/2;
+
+
+        var moving = cc.moveBy(2, cc.p(80,80));
+        var moving2 = cc.moveBy(5, cc.p(180,10));
+        plankton.runAction(moving);
+        plankton.runAction(moving2);
 
         return true;
     }
@@ -59,7 +65,7 @@ var StartScene = cc.Scene.extend({
     onEnter:function () {
         this._super();
 
-        var layer = new StartLayer();
+        var layer = new HelloWorldLayer();
         this.addChild(layer);
     }
 
