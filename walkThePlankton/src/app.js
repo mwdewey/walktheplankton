@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 var StartLayer = cc.Layer.extend({
-    ctor:function () {
+    ctor: function () {
         this._super();
 
         cc.log("Debugging is working.");
@@ -10,23 +9,24 @@ var StartLayer = cc.Layer.extend({
                 event: cc.EventListener.KEYBOARD,
                 onKeyPressed: this.onKeyPressed,
                 onKeyReleased: this.onKeyReleased
-            }),this);
+            }), this);
 
         var startLabel = new cc.LabelTTF("Press this", "Segoe UI", 40);
-        startLabel.x = cc.winSize.width/2;
-        startLabel.y = cc.winSize.height/2;
+        startLabel.x = cc.winSize.width / 2;
+        startLabel.y = cc.winSize.height / 2;
 
         this.addChild(startLabel);
 
         return true;
     },
-    onKeyPressed:function(event){
-        if(event == enumKeyCodes.KEY_B) cc.log (event);
+    onKeyPressed: function (event) {
+        if (event == enumKeyCodes.KEY_B) cc.log(event);
         return true;
     },
-    onKeyReleased:function (event){
-        if(event == enumKeyCodes.KEY_B) cc.log (event);
-=======
+    onKeyReleased: function (event) {
+        if (event == enumKeyCodes.KEY_B) cc.log(event);
+    }
+});
 
 var HelloWorldLayer = cc.Layer.extend({
     ctor:function () {
@@ -51,7 +51,6 @@ var HelloWorldLayer = cc.Layer.extend({
         plankton.x = 200;
         plankton.y = 300;
 
->>>>>>> 880d233597f28c9b08c93bf7f83f0483b7b0933d
         return true;
     }
 });

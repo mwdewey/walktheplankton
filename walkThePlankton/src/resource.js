@@ -2,7 +2,7 @@ var res = {
     HelloWorld_png : "res/HelloWorld.png",
     CloseNormal_png : "res/CloseNormal.png",
     CloseSelected_png : "res/CloseSelected.png",
-    Plankton_png : "res/planktonTester.png"
+    Plankton_png : "res/Sprites/plankton.png"
 };
 
 var g_resources = [];
