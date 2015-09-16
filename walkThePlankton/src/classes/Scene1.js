@@ -2,9 +2,6 @@ var Scene1Layer = cc.Layer.extend({
     ctor:function () {
         this._super();
 
-        var background = new cc.Sprite (res.underwater_png);
-        this.addChild(background);
-
         cc.eventManager.addListener(
             cc.EventListener.create({
                 event: cc.EventListener.KEYBOARD,

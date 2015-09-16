@@ -774,6 +774,11 @@ cc.Sprite = cc.Node.extend(/** @lends cc.Sprite# */{
         // rendering using batch node
         if (_t._batchNode) {
             // update dirty, don't update _recursiveDirty
+
+
+
+
+
             _t.dirty = true;
         } else {
             // self rendering
