@@ -12,9 +12,13 @@
 
     "jsList" : [
         "src/resource.js",
+        "src/classes/Plankton.js",
         "src/app.js",
-		"src/classes/plankton.js",
+        "src/classes/Scene0.js",
+        "src/classes/Scene1.js",
+        "src/classes/Scene2.js",
+        "src/classes/Scene3.js",
+        "src/classes/Scene4.js",
         "src/classes/enumKeyCodes.js"
-
     ]
 }
