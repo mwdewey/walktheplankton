@@ -1,5 +1,5 @@
 var res = {
-    Plankton_png : "res/planktonTester.png",
+    Plankton_png : "res/Sprites/plankton.png",
     underwater_png : "res/Background/underwater.png",
     CloseNormal_png : "res/CloseNormal.png",
     CloseSelected_png : "res/CloseSelected.png"
