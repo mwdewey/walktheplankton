@@ -1,6 +1,8 @@
 var res = {
     Plankton_png : "res/planktonTester.png",
-    underwater_png : "res/Background/underwater.png"
+    underwater_png : "res/Background/underwater.png",
+    CloseNormal_png : "res/CloseNormal.png",
+    CloseSelected_png : "res/CloseSelected.png"
 };
 
 var g_resources = [];

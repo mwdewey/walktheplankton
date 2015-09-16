@@ -18,6 +18,7 @@
         "src/classes/Scene1.js",
         "src/classes/Scene2.js",
         "src/classes/Scene3.js",
-        "src/classes/Scene4.js"
+        "src/classes/Scene4.js",
+        "src/classes/enumKeyCodes.js"
     ]
 }
