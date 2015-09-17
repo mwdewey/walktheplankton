@@ -7,8 +7,8 @@ var res = {
     startButtonSelect : "res/start_s.png",
     underwaterbg : "res/Background/underwater.png",
     plankton : "res/Sprites/plankton.png",
-    munch_png : "res/Sprites/whale/munch.png",
-    munch_plist : "res/Sprites/whale/munch.plist"
+    whale_png : "res/Sprites/munch.png",
+    whale_plist : "res/Sprites/munch.plist"
 };
 
 var g_resources = [];

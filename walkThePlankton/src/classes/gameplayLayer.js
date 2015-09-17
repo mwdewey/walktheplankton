@@ -29,8 +29,8 @@ var GameplayLayer = cc.Layer.extend({
         **/
 
         //create spritesheet
-        cc.spriteFrameCache.addSpriteFrame(res.munch_plist);
-        this.whaleSpriteSheet = new cc.SpriteBatchNode(res.munch_png);
+        cc.spriteFrameCache.addSpriteFrame(res.whale_plist);
+        this.whaleSpriteSheet = new cc.SpriteBatchNode(res.whale_png);
         this.addChild(this.whaleSpriteSheet);
 
         //create spriteframe array
@@ -49,13 +49,13 @@ var GameplayLayer = cc.Layer.extend({
         //wrap animate action with repeat forever action to make animation continuous
         this.movingAction = new cc.repeatForever(new cc.Animate(animation));
         //create whale sprite
-        this.sprite = new cc.Sprite("#whale1.png");
+        this.whaleSprite = new cc.Sprite("#whale1.png");
         //create attributes for whale
-        this.sprite.attr({
+        this.whaleSprite.attr({
             x: 30,
             y: 30
         });
-        this.sprite.runAction(this.movingAction);
-        this.whaleSpriteSheet.addChild(this.sprite);
+        this.whaleSprite.runAction(this.movingAction);
+        this.whaleSpriteSheet.addChild(this.whaleSprite);
     }
 });
