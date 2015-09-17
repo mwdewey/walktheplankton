@@ -2,10 +2,11 @@ var Scene1Layer = cc.Layer.extend({
     ctor:function () {
         this._super();
 
-        this.plankton = new Plankton(400,400);
-        this.addChild(this.plankton);
+        planktonObject = new Plankton(400,400);
 
-        this.plankton.x = 400; this.plankton.y = 400;
+        this.addChild(planktonObject);
+
+        planktonObject.x = 400; planktonObject.y = 400;
 
         return true;
     },

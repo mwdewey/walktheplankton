@@ -20,6 +20,8 @@
         "src/classes/Scene3.js",
         "src/classes/Scene4.js",
         "src/classes/enumKeyCodes.js",
-        "src/classes/backgroundlayer.js"
+        "src/classes/backgroundlayer.js",
+        "src/classes/obstacle.js",
+        "src/classes/gameObjects.js"
     ]
 }
