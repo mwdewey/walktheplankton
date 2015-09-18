@@ -2,16 +2,16 @@ var Scene1Layer = cc.Layer.extend({
     ctor:function () {
         this._super();
 
-        planktonObject = new Plankton(400,400);
+        var startLabel = new cc.LabelTTF("YAY SCENE 1", "Segoe UI", 40);
+        startLabel.x = cc.winSize.width/2;
+        startLabel.y = cc.winSize.height/2;
 
-        this.addChild(planktonObject);
+        this.addChild(startLabel);
 
-        planktonObject.x = 400; planktonObject.y = 400;
+        this.plankton = new Plankton(400,400);
+        this.addChild(this.plankton);
 
-        return true;
-    },
-    onKeyReleased:function (event){
-        cc.director.pushScene(new Scene2());
+        this.plankton.x = 400; this.plankton.y = 400;
 
         return true;
     }
