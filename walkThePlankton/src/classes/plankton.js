@@ -22,13 +22,13 @@ var Plankton = cc.Sprite.extend({
 
 
         }, this);
-
+        this.scheduleUpdate();
 
     },
 
     onKeyDown:function(key, event){
         var t=event.getCurrentTarget();
-        var deltaX = 0; var deltaY = 0;
+
         switch(key) {
 
             case enumKeyCodes.KEY_Up:
@@ -37,31 +37,18 @@ var Plankton = cc.Sprite.extend({
             case enumKeyCodes.KEY_Down:
                 t.movingDown = true;
                 break;
-        }
-        switch(key){
             case enumKeyCodes.KEY_Left:
                 t.movingLeft = true;
                 break;
             case enumKeyCodes.KEY_Right:
                 t.movingRight = true;
                 break;
+            case enumKeyCodes.KEY_P:
+                //cc.director.pushScene(new PauseScene()); BROKEN
+                break;
         }
 
-        if(t.movingUp){
-            deltaY += 5;
-        }
-        if(t.movingDown){
-            deltaY -= 5;
-        }
-        if(t.movingLeft){
-            deltaX -= 5;
-        }
-        if(t.movingRight){
-            deltaX += 5;
-        }
 
-        var move = cc.moveBy(0, cc.p(deltaX, deltaY));
-        t.runAction(move);
 
     },
 
@@ -75,8 +62,6 @@ var Plankton = cc.Sprite.extend({
             case enumKeyCodes.KEY_Down:
                 t.movingDown = false;
                 break;
-        }
-        switch(key){
             case enumKeyCodes.KEY_Left:
                 t.movingLeft = false;
                 break;
@@ -87,7 +72,26 @@ var Plankton = cc.Sprite.extend({
     },
 
     update:function(dt) {
+        this.move();
+    },
 
+    move:function(){
+        var deltaX = 0; var deltaY = 0;
+        if(this.movingUp){
+            deltaY += 5;
+        }
+        if(this.movingDown){
+            deltaY -= 5;
+        }
+        if(this.movingLeft){
+            deltaX -= 5;
+        }
+        if(this.movingRight){
+            deltaX += 5;
+        }
+
+        var move = cc.moveBy(0, cc.p(deltaX, deltaY));
+        this.runAction(move);
     }
 
 

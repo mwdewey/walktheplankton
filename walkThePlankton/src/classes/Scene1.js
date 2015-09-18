@@ -21,8 +21,8 @@ var Scene1 = cc.Scene.extend({
     onEnter:function () {
         this._super();
 
-        var layer = new Scene1Layer();
-        this.addChild(layer);
+        this.addChild(new BackgroundLayer());
+        this.addChild(new Scene1Layer());
     }
 
 });

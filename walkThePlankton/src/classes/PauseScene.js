@@ -1,4 +1,4 @@
-var Scene0Layer = cc.Layer.extend({
+var PauseLayer = cc.Layer.extend({
     ctor:function () {
         this._super();
 
@@ -9,7 +9,7 @@ var Scene0Layer = cc.Layer.extend({
                 onKeyReleased: this.onKeyReleased
             }),this);
 
-        var startLabel = new cc.LabelTTF("Press any key to start", "Segoe UI", 40);
+        var startLabel = new cc.LabelTTF("Paused", "Segoe UI", 40);
         startLabel.x = cc.winSize.width/2;
         startLabel.y = cc.winSize.height/2;
 
@@ -18,17 +18,17 @@ var Scene0Layer = cc.Layer.extend({
         return true;
     },
     onKeyReleased:function (event){
-        cc.director.pushScene(new cc.TransitionFade(1.0,new Scene1()));
+        cc.director.popScene();
 
         return true;
     }
 });
 
-var Scene0 = cc.Scene.extend({
+var PauseScene = cc.Scene.extend({
     onEnter:function () {
         this._super();
 
-        var layer = new Scene0Layer();
+        var layer = new PauseLayer();
         this.addChild(layer);
     }
 
