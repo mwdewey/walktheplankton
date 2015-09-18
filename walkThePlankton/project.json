@@ -22,6 +22,7 @@
         "src/classes/enumKeyCodes.js",
         "src/classes/backgroundlayer.js",
         "src/classes/obstacle.js",
-        "src/classes/gameObjects.js"
+        "src/classes/gameObjects.js",
+        "src/classes/PauseScene.js"
     ]
 }

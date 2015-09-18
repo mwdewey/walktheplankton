@@ -11,7 +11,7 @@ var Scene1Layer = cc.Layer.extend({
         return true;
     },
     onKeyReleased:function (event){
-        cc.director.runScene(new Scene2());
+        cc.director.pushScene(new Scene2());
 
         return true;
     }

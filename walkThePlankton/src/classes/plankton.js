@@ -37,13 +37,14 @@ var Plankton = cc.Sprite.extend({
             case enumKeyCodes.KEY_Down:
                 t.movingDown = true;
                 break;
-        }
-        switch(key){
             case enumKeyCodes.KEY_Left:
                 t.movingLeft = true;
                 break;
             case enumKeyCodes.KEY_Right:
                 t.movingRight = true;
+                break;
+            case enumKeyCodes.KEY_P:
+                //cc.director.pushScene(new PauseScene()); BROKEN
                 break;
         }
 
@@ -57,14 +58,16 @@ var Plankton = cc.Sprite.extend({
 
             case enumKeyCodes.KEY_Up:
                 t.movingUp = false;
+                break;
             case enumKeyCodes.KEY_Down:
                 t.movingDown = false;
-        }
-        switch(key){
+                break;
             case enumKeyCodes.KEY_Left:
                 t.movingLeft = false;
+                break;
             case enumKeyCodes.KEY_Right:
                 t.movingRight = false;
+                break;
         }
     },
 
