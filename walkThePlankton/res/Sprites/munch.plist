@@ -4,7 +4,7 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>whale1.png</key>
+            <key>whale0.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,294},{460,260}}</string>
@@ -17,7 +17,7 @@
                 <key>sourceSize</key>
                 <string>{500,350}</string>
             </dict>
-            <key>whale2.png</key>
+            <key>whale1.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,2},{460,290}}</string>
@@ -40,7 +40,7 @@
             <key>size</key>
             <string>{464,556}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:91c3ab8bc6bd9502a94a808c9cbf4283:9178cf013baa7b62fcbfa6c663ae89e6:ae7d4fccd1a67a3612ef0b42b46f203b$</string>
+            <string>$TexturePacker:SmartUpdate:eec1779335b143dcd9616767f25683e2:9178cf013baa7b62fcbfa6c663ae89e6:ae7d4fccd1a67a3612ef0b42b46f203b$</string>
             <key>textureFileName</key>
             <string>munch.png</string>
         </dict>
