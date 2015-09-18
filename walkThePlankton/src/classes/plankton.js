@@ -30,17 +30,20 @@ var Plankton = cc.Sprite.extend({
         var t=event.getCurrentTarget();
 
         switch(key) {
-
             case enumKeyCodes.KEY_Up:
+            case enumKeyCodes.KEY_W:
                 t.movingUp = true;
                 break;
             case enumKeyCodes.KEY_Down:
+            case enumKeyCodes.KEY_S:
                 t.movingDown = true;
                 break;
             case enumKeyCodes.KEY_Left:
+            case enumKeyCodes.KEY_A:
                 t.movingLeft = true;
                 break;
             case enumKeyCodes.KEY_Right:
+            case enumKeyCodes.KEY_D:
                 t.movingRight = true;
                 break;
             case enumKeyCodes.KEY_P:
@@ -57,15 +60,19 @@ var Plankton = cc.Sprite.extend({
         switch(key) {
 
             case enumKeyCodes.KEY_Up:
+            case enumKeyCodes.KEY_W:
                 t.movingUp = false;
                 break;
             case enumKeyCodes.KEY_Down:
+            case enumKeyCodes.KEY_S:
                 t.movingDown = false;
                 break;
             case enumKeyCodes.KEY_Left:
+            case enumKeyCodes.KEY_A:
                 t.movingLeft = false;
                 break;
             case enumKeyCodes.KEY_Right:
+            case enumKeyCodes.KEY_D:
                 t.movingRight = false;
                 break;
         }
