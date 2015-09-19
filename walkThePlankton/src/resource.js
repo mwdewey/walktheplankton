@@ -8,7 +8,10 @@ var res = {
     underwaterbg : "res/Background/underwater.png",
     plankton : "res/Sprites/plankton.png",
     whale_png : "res/Sprites/munch.png",
-    whale_plist : "res/Sprites/munch.plist"
+    whale_plist : "res/Sprites/munch.plist",
+    map_png: "res/map.png",
+    map00_tmx: "res/map00.tmx",
+    map01_tmx: "res/map01.tmx"
 };
 
 var g_resources = [];

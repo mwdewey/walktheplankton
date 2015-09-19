@@ -15,6 +15,9 @@ var GameplayLayer = cc.Layer.extend({
         this._super();
         this.space = space;
         this.init();
+        this._debugNode = new cc.PhysicsDebugNode(this.space);
+        //parallax ratio and offset
+        this.addChild(this._debugNode, 10);
     },
     init:function () {
         this._super();
