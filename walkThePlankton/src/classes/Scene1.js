@@ -8,7 +8,9 @@ var Scene1Layer = cc.Layer.extend({
 
         this.addChild(startLabel);
 
-        this.plankton = new Plankton(400,400);
+        planktonObject = new Plankton(400,400);
+
+
         this.addChild(this.plankton);
 
         this.plankton.x = 400; this.plankton.y = 400;
