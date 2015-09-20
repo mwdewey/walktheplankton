@@ -18,7 +18,11 @@ var WeedObject = cc.Sprite.extend({
         var loc = planktonObject.getPosition();
         var win = cc.director.getWinSize();
 
+<<<<<<< HEAD
         var xPos = (win.width+this.width)-(loc.x*this.scale+this.offset_x)%(win.width+this.width)-this.width/2;
+=======
+        var xPos = win.width-(loc.x*this.scale+this.offset_x  + planktonObject.distanceMoved*20 * this.scale)%win.width;
+>>>>>>> 8bf6f9ef68248dc8b34c064c42a1a0b5df98888d
 
         this.setPosition(cc.p(xPos, this.height/2+this.offset_y));
     }
