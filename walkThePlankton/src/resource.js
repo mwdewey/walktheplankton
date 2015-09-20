@@ -9,11 +9,11 @@ var res = {
     plankton : "res/Sprites/plankton.png",
     whale_png : "res/Sprites/munch.png",
     whale_plist : "res/Sprites/munch.plist",
-    map_png: "res/map.png",
     map00_tmx: "res/map00.tmx",
     map01_tmx: "res/map01.tmx",
-    background_png: "res/background.png",
-    background_plist: "res/background.plist"
+    background_png: "res/Sprites/background.png",
+    background_plist: "res/Sprites/background.plist",
+    coral: "res/Foreground/coral1.png"
 };
 
 var g_resources = [];

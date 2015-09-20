@@ -19,6 +19,8 @@
         "src/classes/gameplayLayer.js",
         "src/classes/backgroundLayer.js",
         "src/classes/overlayLayer.js",
-        "src/classes/global.js"
+        "src/classes/global.js",
+        "src/classes/bubble.js",
+        "src/classes/rock.js"
     ]
 }

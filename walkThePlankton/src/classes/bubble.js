@@ -7,27 +7,27 @@ var Bubble = cc.Class.extend({
     sprite: null,
     shape: null,
     //used to specify which map this object belongs to
-    _mapIndex: 0,
+    _map: 0,
 
-    get mapIndex() {
-        return this._mapIndex;
+    get map() {
+        return this._map;
     },
-    set mapIndex(index) {
-        this._mapIndex = index;
+    set map(newMap) {
+        this._map = newMap;
     },
 
     ctor: function (spriteSheet, space, pos) {
         this.space = space;
         //initialize bubble animation here
         var animFrames = [];
-        for (var i = 1; i < 3; i++) {
+        for (var i = 0; i < 2; i++) {
             var str = "bubbles" + i + ".png";
             var frame = cc.spriteFrameCache.getSpriteFrame(str);
             animFrames.push(frame);
         }
         var animation = new cc.Animation(animFrames, 0.5);
         var action = new cc.RepeatForever(new cc.Animate(animation));
-        this.sprite = new cc.PhysicsSprite("#bubbles1.png");
+        this.sprite = new cc.PhysicsSprite("#bubbles0.png");
         //initialize physics
         var radius = 0.95 * this.sprite.getContentSize().width / 2;
         var body = new cp.StaticBody();

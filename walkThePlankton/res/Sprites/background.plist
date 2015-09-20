@@ -4,7 +4,7 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>bubbles1.png</key>
+            <key>bubbles0.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1362,2},{140,200}}</string>
@@ -17,7 +17,7 @@
                 <key>sourceSize</key>
                 <string>{320,320}</string>
             </dict>
-            <key>bubbles2.png</key>
+            <key>bubbles1.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1362,144},{140,200}}</string>
@@ -105,7 +105,7 @@
             <key>size</key>
             <string>{1564,294}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:f3be27275b8dd6d2a4b09528b82de277:1c721c04f4db46a63e8cd5009b3cc355:0efa5fec0be417390841f237bfdb917e$</string>
+            <string>$TexturePacker:SmartUpdate:142038e0a5e6faae46a4568eaab38a4f:1c721c04f4db46a63e8cd5009b3cc355:0efa5fec0be417390841f237bfdb917e$</string>
             <key>textureFileName</key>
             <string>background.png</string>
         </dict>
