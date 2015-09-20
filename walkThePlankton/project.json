@@ -13,6 +13,7 @@
     "jsList" : [
         "src/resource.js",
         "src/classes/Plankton.js",
+        "src/classes/Collectible.js",
         "src/app.js",
         "src/classes/Scene0.js",
         "src/classes/Scene1.js",

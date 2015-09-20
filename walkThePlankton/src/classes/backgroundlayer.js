@@ -36,6 +36,7 @@ var CoralObject = cc.Sprite.extend({
         this.offset_x = offset_x;
         this.offset_y = offset_y;
         this.scale = scale;
+
     },
     init: function () {
 
@@ -43,10 +44,12 @@ var CoralObject = cc.Sprite.extend({
     update: function (dt) {
         var loc = planktonObject.getPosition();
         var win = cc.director.getWinSize();
-        
+
         var xPos = win.width-(loc.x*this.scale+this.offset_x   + planktonObject.distanceMoved*20 * this.scale)%win.width;
 
         this.setPosition(cc.p(xPos, this.height/2+this.offset_y));
+
+
     }
 });
 
@@ -79,6 +82,8 @@ var BackgroundLayer = cc.Layer.extend({
         var win = cc.director.getWinSize();
 
         this.setPosition(cc.p(win.width-loc.x*this.scale+this.offset_x, this.height/2+this.offset_y));
+
+
     }
 
 });

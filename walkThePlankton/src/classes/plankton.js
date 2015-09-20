@@ -81,9 +81,9 @@ var Plankton = cc.Sprite.extend({
     },
 
     update:function(dt) {
+        this.checkCollectibleCollisions();
         this.move();
         this.distanceMoved+=dt * 2;
-        cc.log(this.distanceMoved);
     },
 
     move:function(){
@@ -103,6 +103,32 @@ var Plankton = cc.Sprite.extend({
 
         var move = cc.moveBy(0, cc.p(deltaX, deltaY));
         this.runAction(move);
+        this.checkObstacleCollisions(deltaX, deltaY);
+    },
+
+    checkCollectibleCollisions:function(){
+        //for(var i = 0; i < dangerObstacles.length; i++){
+
+        //}
+        for(var i = 0; i < collectibles.length; i++){
+            if(cc.rectIntersectsRect(planktonObject.getBoundingBox(), collectibles[i].getBoundingBox())){
+                this.score += collectibles[i].value;
+                cc.log(this.score);
+                collectibles[i].removeFromParent(true);
+                collectibles.splice(i, 1);
+            }
+
+        }
+    },
+
+    checkObstacleCollisions:function(deltaX, deltaY){
+        for(var i = 0; i < obstacles.length; i++){
+            if(cc.rectIntersectsRect(planktonObject.getBoundingBox(), obstacles[i].getBoundingBox())){
+                var move = cc.moveBy(0, cc.p(-1 * deltaX, -1 * deltaY));
+                this.runAction(move);
+            }
+
+        }
     }
 
 
