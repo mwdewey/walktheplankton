@@ -83,7 +83,7 @@ var Plankton = cc.Sprite.extend({
     update:function(dt) {
         this.move();
         this.distanceMoved+=dt * 2;
-        cc.log(this.distanceMoved);
+        //cc.log(this.distanceMoved);
     },
 
     move:function(){
@@ -101,12 +101,20 @@ var Plankton = cc.Sprite.extend({
             deltaX += 5;
         }
 
-        var move = cc.moveBy(0, cc.p(deltaX, deltaY));
-        this.runAction(move);
+        if(cc.rectIntersectsRect(planktonObject.getBoundingBox(),block.getBoundingBox())){
+            var b = block.getBoundingBox();
+            var p = planktonObject.getBoundingBox();
+            var v = 10;
+
+            if(p.y + p.height < b.y + v) startLabel.setString("BOTTOM");
+            else if (p.y > b.y + b.height - v) startLabel.setString("TOP");
+            else if (p.x + p.width < b.x + v) startLabel.setString("LEFT");
+            else if (p.x > b.x + b.width - v) startLabel.setString("RIGHT");
+
+        }
+        else startLabel.setString("MEEP");
+
+        this.runAction(cc.moveBy(0, cc.p(deltaX, deltaY)));
     }
-
-
-
-
-
 });
+
