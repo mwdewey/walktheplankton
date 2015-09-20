@@ -11,3 +11,11 @@ if(typeof TagOfLayer == "undefined") {
     TagOfLayer.gameplay = 1;
     TagOfLayer.overlay = 2;
 };
+
+//collision objects
+if(typeof SpriteTag == "undefined") {
+    var SpriteTag = {};
+    SpriteTag.plankton = 0;
+    SpriteTag.rock = 1;
+    SpriteTag.bubble = 2;
+}

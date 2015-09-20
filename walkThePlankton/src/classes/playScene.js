@@ -5,6 +5,7 @@
 var PlayScene = cc.Scene.extend({
     //space object used by chipmunk to represent physics world
     space: null,
+    gameLayer: null,
 
     //initialize space
     initPhysics: function () {
@@ -28,14 +29,22 @@ var PlayScene = cc.Scene.extend({
     update: function (dt) {
         //step in loop and tells chipmunk to simulate physics
         this.space.step(dt);
+
+        var gameplayLayer = this.gameLayer.getChildByTag(TagOfLayer.gameplay);
+        var eyeX = gameplayLayer.getEyeX();
+
+        this.gameLayer.setPosition(cc.p(-eyeX, 0));
     },
     onEnter: function () {
         this._super();
         this.initPhysics();
+
+        this.gameLayer = new cc.Layer();
         //add game layers in order
-        this.addChild(new BackgroundLayer());
-        this.addChild(new GameplayLayer(this.space));
-        this.addChild(new OverlayLayer());
+        this.gameLayer.addChild(new BackgroundLayer(), 0, TagOfLayer.background);
+        this.gameLayer.addChild(new GameplayLayer(this.space), 0, TagOfLayer.gameplay);
+        this.addChild(this.gameLayer);
+        this.gameLayer.addChild(new OverlayLayer(), 0, TagOfLayer.overlay);
 
         this.scheduleUpdate();
     }

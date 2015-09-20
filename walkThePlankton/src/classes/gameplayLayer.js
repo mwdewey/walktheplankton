@@ -85,6 +85,12 @@ var GameplayLayer = cc.Layer.extend({
         });
         this.whaleSprite.runAction(this.munchAction);
         this.whaleSpriteSheet.addChild(this.whaleSprite);
+
+        this.scheduleUpdate();
+    },
+    getEyeX: function () {
+        //calculate delta movement of gameplay layer
+        return this.planktonSprite.getPositionX() - g_startX;
     }
 
 });
