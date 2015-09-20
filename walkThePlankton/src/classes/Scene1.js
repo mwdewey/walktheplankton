@@ -8,10 +8,10 @@ var Scene1Layer = cc.Layer.extend({
 
         this.addChild(startLabel);
 
-        this.plankton = new Plankton(400,400);
-        this.addChild(this.plankton);
+        planktonObject = new Plankton(400,400);
+        this.addChild(planktonObject);
 
-        this.plankton.x = 400; this.plankton.y = 400;
+        planktonObject.x = 400; planktonObject.y = 400;
 
         return true;
     }
@@ -20,6 +20,7 @@ var Scene1Layer = cc.Layer.extend({
 var Scene1 = cc.Scene.extend({
     onEnter:function () {
         this._super();
+
 
         this.addChild(new BackgroundLayer());
         this.addChild(new Scene1Layer());
