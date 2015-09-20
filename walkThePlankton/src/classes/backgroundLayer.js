@@ -32,7 +32,7 @@ var BackgroundLayer = cc.Layer.extend({
         //create map01
         this.map01 = new cc.TMXTiledMap(res.map01_tmx);
         //set position of map01 to end of map00
-        this.map01.setPosition(cc.p(this.mapWidth, 0));
+        this.map01.setPosition(cc.p(this.mapWidth / 2, 0));
         this.addChild(this.map01);
     }
 });

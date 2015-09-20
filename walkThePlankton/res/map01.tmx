@@ -1,29 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="28" tilewidth="32" tileheight="32" nextobjectid="1">
- <tileset firstgid="1" name="bubbles1" tilewidth="32" tileheight="32" tilecount="100">
-  <image source="Foreground/bubbles1.png" width="320" height="320"/>
- </tileset>
- <tileset firstgid="101" name="bubbles2" tilewidth="32" tileheight="32" tilecount="100">
-  <image source="Foreground/bubbles2.png" width="320" height="320"/>
- </tileset>
- <tileset firstgid="201" name="coral1" tilewidth="32" tileheight="32" tilecount="100">
+ <tileset firstgid="1" name="coral1" tilewidth="32" tileheight="32" tilecount="100">
   <image source="Foreground/coral1.png" width="320" height="320"/>
  </tileset>
- <tileset firstgid="301" name="coral2" tilewidth="32" tileheight="32" tilecount="100">
-  <image source="Foreground/coral2.png" width="320" height="320"/>
- </tileset>
- <tileset firstgid="401" name="weed" tilewidth="32" tileheight="32" tilecount="100">
-  <image source="Foreground/weed.png" width="320" height="320"/>
- </tileset>
- <tileset firstgid="501" name="weed2" tilewidth="32" tileheight="32" tilecount="100">
-  <image source="Foreground/weed2.png" width="320" height="320"/>
- </tileset>
- <tileset firstgid="601" name="weed3" tilewidth="32" tileheight="32" tilecount="100">
-  <image source="Foreground/weed3.png" width="320" height="320"/>
- </tileset>
- <layer name="Tile Layer 1" width="50" height="28">
+ <layer name="Tile Layer 1" width="50" height="28" opacity="0.9">
   <data encoding="base64" compression="zlib">
-   eJzV11WwlWUUBuBz6O4O6e7uBuluu2hEQERCBJRSkO5uULq7sehuAVFCQEAaRPE59+fi7Kt/fGeeuzXrf9fFt2d2eFhYWDSiE4OYxCI2cYgb9v9IfBKQkEQkJglJSUby4KqFlJSkIjVpSEs60pOBjMFVCymZyEwWspKN7OQgJ7kCaxZa8pCXfOSnAAUpRGGKBFctpBSjOCUoSSlKU4aylAuuWkipQEUqUZkqVKUa1akRWLPQUpNa1KYOdalHfRrQMLhqIaUxTWhKM5rTgpa0onVw1UJKG9rSjvZ0oCOd6MyHdAmsXdTzEV3pRnc+pgef0JNP6RVYu6inN33oy2f043P6M4CBfBFUuRDyJYMYzBCGMoyv+JrhjAisXdTzDSMZxWjGMJZxjGcCEwNrF/VMYjJTmMo0pjODmcxidlDlQsgc5jKP+SxgIYtYzLd8F1i7qGcJS1nGclawklWsZg1rA2sX9axjPRvYyCY2s4WtbGN7YO2inh3sZBe72cNeHoWHhT3mCU95xnP+5gX/8C8/m93Hfg5wkEMc5ghHOUYBswUpRGGKUJRiFKcEJRnDWMYxnglMZBKTmcLU8Kjf9zJi1h/ecKIRnRjEJBaxicNxYyc4ySlOc4aznOM8FyhlX2nKUJZylKcCFalEZaYxnRnMZBazmcNc5jE/hDvi6hiP+CQgIYlITBKSkoxfzF7kEpf5lSv8xu9c5RpVfLsq1ahODV6lJrWoTR0WsJBFLOZbvmMJS1nG8hDuSK5jClKSitSkIS3pSE8Grpu9wR/c5Ba3+ZM73OUedX27HvVpQEMa0ZgmNKUZK1jJKlazhrWsYz0b2BjCHRl1fIVMZCYLWclGdnKQk7/M3ucBD3nEY57wlGc8p7lvt6AlrWjNa7zOG7zJW2xiM1vYyja2s4Od7GJ3JHeM1GUUoxnDWMaRi9zkIS/5yE8BClKIwvxtxwv+4V9eRiz1nXCiEZ0YvM07vMt7vM8HtKEt7WjPHvbyPT/wIz9F/J6wj/0ciOSOybpMYSrTmM4MilCUYhSnBCUpRWnKUDbi3dsZi9jEIS7xiE8CEpKIDnSkE535kC58RFe60Z2DHOIwRzjKMY5zgpOciuSOubrMYz4LWMgiylGeClSkEpWpQlWqUT3i3duZhKQkIzkpSEkqUpOGj+nBJ/TkU3rRmz705TNOc4aznOM8F/iFi1ziciR3LNVlGctZwUpWUYNXqUktalOHutSjPg0i3r2d6UhPBjLyCpnITBay0o/P6c8ABvIFXzKIwQzhV67wG79zlWtc5wZ/cDOSO9brsoGNbGIzW2hIIxrThKY0ozktaEmriHdvZ3ZykJNc5CYPeclHfoYyjK/4muGM4BtGMorR3OI2f3KHu9zjL+7zgIeR3PEfMOwa+g==
+   eJztzkOWBUEAAME/tm3btm3buP8ZJo7QvZnaVL4X+8xkYrFYLBaLxWKxWCwWS18W2eSQSx75FFBIEcXB7pJXQilllFNBJVVUU0NtsLvk1VFPA4000UwLrbTRHuwueR100kU3PfTSRz8DDIaaS9EQw4wwyhjjTDDJFNPB7pI3wyxzzLPAIksss8JqsLvkrbHOBptssc0Ou+yxH2ouRQcccsQxJ5xyxjkXXAa7S94V19xwyx33PPDIE8/B7pL3witvvPPBJ19888PvP3z8AVBrE7s=
   </data>
  </layer>
 </map>
