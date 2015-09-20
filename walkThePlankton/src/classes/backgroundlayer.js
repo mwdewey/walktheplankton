@@ -18,7 +18,7 @@ var WeedObject = cc.Sprite.extend({
         var loc = planktonObject.getPosition();
         var win = cc.director.getWinSize();
 
-        var xPos = win.width-(loc.x*this.scale+this.offset_x)%win.width;
+        var xPos = win.width-(loc.x*this.scale+this.offset_x  + planktonObject.distanceMoved*20 * this.scale)%win.width;
 
         this.setPosition(cc.p(xPos, this.height/2+this.offset_y));
     }
@@ -44,7 +44,7 @@ var CoralObject = cc.Sprite.extend({
         var loc = planktonObject.getPosition();
         var win = cc.director.getWinSize();
 
-        var xPos = win.width-(loc.x*this.scale+this.offset_x)%win.width;
+        var xPos = win.width-(loc.x*this.scale+this.offset_x   + planktonObject.distanceMoved*20 * this.scale)%win.width;
 
         this.setPosition(cc.p(xPos, this.height/2+this.offset_y));
     }

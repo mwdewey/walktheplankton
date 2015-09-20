@@ -12,6 +12,8 @@ var Plankton = cc.Sprite.extend({
         this.movingDown = false;
         this.movingLeft = false;
         this.movingRight = false;
+        this.distanceMoved = 0;
+        this.score = 0;
         //this.moveUp = cc.moveBy(0, cc.p(0,30));
 
         cc.eventManager.addListener({
@@ -73,6 +75,8 @@ var Plankton = cc.Sprite.extend({
 
     update:function(dt) {
         this.move();
+        this.distanceMoved+=dt * 2;
+        cc.log(this.distanceMoved);
     },
 
     move:function(){
