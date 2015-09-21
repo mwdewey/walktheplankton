@@ -13,7 +13,9 @@ var res = {
     map01_tmx: "res/map01.tmx",
     background_png: "res/Sprites/background.png",
     background_plist: "res/Sprites/background.plist",
-    coral: "res/Foreground/coral1.png"
+    coral: "res/Foreground/coral1.png",
+    restartButtonNormal: "res/restart_n.png",
+    restartButtonSelect: "res/restart_n.png"
 };
 
 var g_resources = [];

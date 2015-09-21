@@ -21,6 +21,7 @@
         "src/classes/overlayLayer.js",
         "src/classes/global.js",
         "src/classes/bubble.js",
-        "src/classes/rock.js"
+        "src/classes/rock.js",
+        "src/classes/gameOverLayer.js"
     ]
 }

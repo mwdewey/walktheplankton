@@ -31,10 +31,6 @@ var BackgroundLayer = cc.Layer.extend({
         this.addChild(spriteBG);
         */
 
-        cc.spriteFrameCache.addSpriteFrames(res.background_plist);
-        this.spriteSheet = new cc.SpriteBatchNode(res.background_png);
-        this.addChild(this.spriteSheet);
-
         //create map00
         this.map00 = new cc.TMXTiledMap(res.map00_tmx);
         this.addChild(this.map00);
@@ -45,6 +41,11 @@ var BackgroundLayer = cc.Layer.extend({
         //set position of map01 to end of map00
         this.map01.setPosition(cc.p(this.mapWidth, 0));
         this.addChild(this.map01);
+
+        //create sprite sheet for background
+        cc.spriteFrameCache.addSpriteFrames(res.background_plist);
+        this.spriteSheet = new cc.SpriteBatchNode(res.background_png);
+        this.addChild(this.spriteSheet);
 
         this.loadObjects(this.map00, 0);
         this.loadObjects(this.map01, 1);
@@ -121,24 +122,5 @@ var BackgroundLayer = cc.Layer.extend({
                 break;
             }
         }
-    },
-    checkAndReload: function (eyeX) {
-        var newMapIndex = parseInt(eyeX / this.mapWidth);
-        if (this.mapIndex == newMapIndex) {
-            return false;
-        }
-        if (0 == newMapIndex % 2) {
-            //change second map
-            this.map01.setPositionX(this.mapWidth * (newMapIndex + 1));
-            this.loadObjects(this.map01, newMapIndex + 1);
-        } else {
-            //change first map
-            this.map00.setPositionX(this.mapWidth * (newMapIndex + 1));
-            this.loadObjects(this.map00, newMapIndex + 1);
-        }
-        this.removeObjects(newMapIndex - 1);
-        this.mapIndex = newMapIndex;
-
-        return true;
     }
 });

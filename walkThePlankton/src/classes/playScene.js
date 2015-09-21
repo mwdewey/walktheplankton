@@ -75,9 +75,13 @@ var PlayScene = cc.Scene.extend({
     collisionBubbleBegin: function (other, space) {
         var shapes = other.getShapes();
         this.shapesToRemove.push(shapes[1]);
+        var overlayLayer = this.gameLayer.getChildByTag(TagOfLayer.overlay);
+        overlayLayer.addScore(1);
     },
     collisionRockBegin: function (other, space) {
         console.log("==hit rock");
+        cc.director.pause();
+        this.addChild(new GameOverLayer());
     }
 });
 

@@ -16,6 +16,7 @@ var GameplayLayer = cc.Layer.extend({
         this.space = space;
         this.init();
         this._debugNode = new cc.PhysicsDebugNode(this.space);
+        //this._debugNode.setVisible(false);
         //parallax ratio and offset
         this.addChild(this._debugNode, 10);
     },
@@ -91,6 +92,10 @@ var GameplayLayer = cc.Layer.extend({
     getEyeX: function () {
         //calculate delta movement of gameplay layer
         return this.planktonSprite.getPositionX() - g_startX;
+    },
+    update: function (dt) {
+        var overlayLayer = this.getParent().getChildByTag(TagOfLayer.overlay);
+        overlayLayer.updateDistance(this.planktonSprite.getPositionX() - g_startX);
     }
 
 });
