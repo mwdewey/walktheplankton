@@ -8,40 +8,32 @@ var Scene1Layer = cc.Layer.extend({
         planktonObject.x = 400; planktonObject.y = 400;
 
 
+        currentSpeed = 5;
 
 
 
-        collect = new Collectible(200,200);
-        this.addChild(collect);
-        collect.x = 800; collect.y = 400;
-
-        collect2 = new Collectible(200,200);
-        this.addChild(collect2);
-        collect2.x = 300; collect2.y = 100;
 
         collectibles = new Array();
-        collectibles.push(collect);
-        collectibles.push(collect2);
+        for(var i = 0; i < 20; i++){
+            collect = new Collectible(200, 200);
+            this.addChild(collect);
+            collect.x = Math.random() * 100 + 500 * i; collect.y = 100 + Math.random() * 600;
+            collect.setScale(.4, null);
+            collectibles.push(collect);
+        }
 
-        obstacle = new Obstacle(200, 200);
-        this.addChild(obstacle);
-        obstacle.x = 1200; obstacle.y = 200;
 
-        obstacle2 = new Obstacle(200, 200);
-        this.addChild(obstacle2);
-        obstacle2.x = 1000; obstacle2.y = 200;
 
-        obstacle3 = new Obstacle(200, 200);
-        this.addChild(obstacle3);
-        obstacle3.x = 200; obstacle3.y = 400;
 
         obstacles = new Array();
-        obstacles.push(obstacle);
-        obstacles.push(obstacle2);
-        obstacles.push(obstacle3);
+        for(var i = 0; i < 50; i++){
+            obstacle = new Obstacle(200, 200);
+            this.addChild(obstacle);
+            obstacle.x = Math.random() * 100 + 300 * i; obstacle.y = 100 + Math.random() * 600;
+            obstacles.push(obstacle);
+        }
 
-        obstacles[0].runAction(cc.moveBy(15, cc.p(0, 500)));
-        obstacles[1].runAction(cc.moveBy(15, cc.p(-800, 0)));
+        
 
         return true;
     }
