@@ -101,9 +101,9 @@ var Plankton = cc.Sprite.extend({
             deltaX += 5;
         }
 
-        var move = cc.moveBy(0, cc.p(deltaX, deltaY));
-        this.runAction(move);
-        this.checkObstacleCollisions(deltaX, deltaY);
+
+        this.checkObstacleCollisions();
+        this.runAction(cc.moveBy(0, cc.p(deltaX, deltaY)));
     },
 
     checkCollectibleCollisions:function(){
@@ -121,12 +121,21 @@ var Plankton = cc.Sprite.extend({
         }
     },
 
-    checkObstacleCollisions:function(deltaX, deltaY){
+    checkObstacleCollisions:function(){
         for(var i = 0; i < obstacles.length; i++){
-            if(cc.rectIntersectsRect(planktonObject.getBoundingBox(), obstacles[i].getBoundingBox())){
-                var move = cc.moveBy(0, cc.p(-1 * deltaX, -1 * deltaY));
-                this.runAction(move);
+
+            if(cc.rectIntersectsRect(planktonObject.getBoundingBox(),obstacles[i].getBoundingBox())){
+                var b = obstacles[i].getBoundingBox();
+                var p = planktonObject.getBoundingBox();
+                var v = 5;
+
+                if(p.y < b.y - b.height/2 - v) this.setPositionY(b.y  - p.height/2 - v)    //BOTTOM
+                else if (p.y > b.y + b.height/2 + v) this.setPositionY(b.y+ b.height + p.height/2 + v); //TOP
+                else if (p.x < b.x - b.width/2 - v) this.setPositionX(b.x - p.width/2 - v);       //LEFT
+                else if (p.x > b.x + b.width/2 + v) this.setPosition(b.x + b.width + p.width/2 + v); //RIGHT
+
             }
+            else cc.log("MEEP");
 
         }
     }

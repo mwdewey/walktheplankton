@@ -27,8 +27,22 @@ var Scene1Layer = cc.Layer.extend({
         this.addChild(obstacle);
         obstacle.x = 1200; obstacle.y = 200;
 
+        obstacle2 = new Obstacle(200, 200);
+        this.addChild(obstacle2);
+        obstacle2.x = 1000; obstacle2.y = 200;
+
+        obstacle3 = new Obstacle(200, 200);
+        this.addChild(obstacle3);
+        obstacle3.x = 200; obstacle3.y = 400;
+
         obstacles = new Array();
         obstacles.push(obstacle);
+        obstacles.push(obstacle2);
+        obstacles.push(obstacle3);
+
+        obstacles[0].runAction(cc.moveBy(15, cc.p(0, 500)));
+        obstacles[1].runAction(cc.moveBy(15, cc.p(-800, 0)));
+
         return true;
     }
 });
