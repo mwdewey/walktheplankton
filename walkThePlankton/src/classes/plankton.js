@@ -136,10 +136,10 @@ var Plankton = cc.Sprite.extend({
                 var p = this.getBoundingBox();
                 var v = 10;
 
-                if(p.y + p.height < b.y + v) this.setPositionY(b.y  - p.height);    //BOTTOM
-                else if (p.y > b.y + b.height - v) this.setPositionY(b.y+ b.height); //TOP
-                else if (p.x + p.width < b.x + v) this.setPositionX(b.x - p.width - currentSpeed);       //LEFT
-                else if (p.x > b.x + b.width - v) this.setPositionX(b.x + b.width + currentSpeed); //RIGHT
+                if(p.y + p.height < b.y + v) this.setPositionY(b.y  - p.height + p.height/2);    //BOTTOM
+                else if (p.y > b.y + b.height - v) this.setPositionY(b.y+ b.height + p.height/2); //TOP
+                else if (p.x + p.width < b.x + v) this.setPositionX(b.x - p.width + p.width/2);       //LEFT
+                else if (p.x > b.x + b.width - v) this.setPositionX(b.x + b.width + p.width/2); //RIGHT
                 //else this.setPositionX(b.x - p.width/2);
             }
             //selse cc.log("MEEP");
