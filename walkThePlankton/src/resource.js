@@ -15,12 +15,17 @@ var res = {
     rock1_png : "res/Sprites/rock1.png",
     rock2_png : "res/Sprites/rock2.png",
     rock3_png : "res/Sprites/rock3.png",
-    whale1_png : "res/Sprites/whale1.png",
     BatteryStage1_png : "res/HUD/BatteryStage1.png",
     BatteryStage2_png : "res/HUD/BatteryStage2.png",
     BatteryStage3_png : "res/HUD/BatteryStage3.png",
     CameraHud1_png : "res/HUD/CameraHud1.png",
-    CameraHud2_png : "res/HUD/CameraHud2.png"
+    CameraHud2_png : "res/HUD/CameraHud2.png",
+    startButtonNormal: "res/start_normal.png",
+    startButtonSelect: "res/start_selected.png",
+    whale_png: "res/Sprites/munch.png",
+    whale_plist: "res/Sprites/munch.plist",
+    restartButtonNormal: "res/restart_n.png",
+    restartButtonSelect: "res/restart_s.png"
 };
 
 var g_resources = [];

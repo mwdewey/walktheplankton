@@ -1,13 +1,30 @@
-var Scene1Layer = cc.Layer.extend({
+/**
+ * Created by Nanyou on 9/21/2015.
+ */
+
+var GameplayLayer = cc.Layer.extend({
     whaleSpriteSheet: null,
     munchAction: null,
     whaleSprite: null,
     planktonObject: null,
 
-    ctor:function () {
+    ctor: function () {
         this._super();
         this.init();
+    },
 
+    init: function () {
+        this._super();
+
+        //generate terrain
+        var i;
+        for(i=0; i<15; i++)this.addChild(new Seaweed(i*100,100,0.25));
+        for(i=0; i<12; i++)this.addChild(new Coral(i*125,75,0.375));
+        for(i=0; i<10; i++)this.addChild(new Seaweed(i*150,50,0.50));
+        for(i=0; i<7; i++)this.addChild(new Coral(i*175,25,0.75));
+        for(i=0; i<5; i++)this.addChild(new Seaweed(i*200,0,1));
+
+        //generate obstacles and collectibles
         collect = new Collectible(200,200);
         this.addChild(collect);
         collect.x = 800; collect.y = 400;
@@ -40,16 +57,9 @@ var Scene1Layer = cc.Layer.extend({
         obstacles[0].runAction(cc.moveBy(15, cc.p(0, 500)));
         obstacles[1].runAction(cc.moveBy(15, cc.p(-800, 0)));
 
-        return true;
-    },
-
-    init: function () {
-        this._super();
-
-        this.planktonObject = new Plankton(400,400);
+        //create plankton object/sprite
+        this.planktonObject = new Plankton(600,400);
         this.addChild(this.planktonObject);
-
-        this.planktonObject.x = 400; this.planktonObject.y = 400;
 
         // create whale sprite sheet
         cc.spriteFrameCache.addSpriteFrames(res.whale_plist);
@@ -76,57 +86,23 @@ var Scene1Layer = cc.Layer.extend({
         this.whaleSprite = new cc.Sprite("#whale0.png");
         //create attributes for whale
         this.whaleSprite.attr({
-            x: 100,
+            x: 250,
             y: 85
         });
+        //run animation
         this.whaleSprite.runAction(this.munchAction);
         this.whaleSpriteSheet.addChild(this.whaleSprite);
 
+        this.scheduleUpdate();
+    },
+
+    update: function (dt) {
         //check if whale is in line with plankton
         if(this.whaleSprite.y != this.planktonObject.y) {
             //create move action
-            var follow = new cc.MoveTo(2, cc.p(100, this.planktonObject.y));
+            var follow = new cc.MoveTo(0, cc.p(this.whaleSprite.x, this.planktonObject.y));
             //run action on whale
             this.whaleSprite.runAction(new cc.Sequence(follow));
         }
-
-        this.scheduleUpdate();
     }
-});
-
-var HUDLayer = cc.Layer.extend({
-    ctor:function () {
-        this._super();
-
-        var oAnim = new cc.Sprite();
-        var o1 = new cc.SpriteFrame(res.CameraHud1_png, cc.rect(0,0,1600,900));
-        var o2 = new cc.SpriteFrame(res.CameraHud2_png, cc.rect(0,0,1600,900));
-
-        oAnim.setPosition(cc.p(cc.winSize.width/2,cc.winSize.height/2));
-        oAnim.runAction(new cc.Animate(new cc.Animation([o1,o2], 1, 1000)));
-        this.addChild(oAnim);
-
-        var bAnim = new cc.Sprite();
-        var b1 = new cc.SpriteFrame(res.BatteryStage1_png, cc.rect(0,0,1600,900));
-        var b2 = new cc.SpriteFrame(res.BatteryStage2_png, cc.rect(0,0,1600,900));
-        var b3 = new cc.SpriteFrame(res.BatteryStage3_png, cc.rect(0,0,1600,900));
-
-        bAnim.setPosition(cc.p(cc.winSize.width/2,cc.winSize.height/2));
-        bAnim.runAction(new cc.Animate(new cc.Animation([b1,b2,b3], 10, 1000)));
-        this.addChild(bAnim);
-
-        return true;
-    }
-});
-
-var Scene1 = cc.Scene.extend({
-    onEnter:function () {
-        this._super();
-
-
-        this.addChild(new BackgroundLayer());
-        this.addChild(new Scene1Layer());
-        this.addChild(new HUDLayer());
-    }
-
 });

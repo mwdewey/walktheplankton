@@ -25,7 +25,15 @@
         "src/classes/obstacle.js",
         "src/classes/gameObjects.js",
         "src/classes/PauseScene.js",
-      "src/classes/HUDLayer.js"
+        "src/classes/HUDLayer.js",
+        "src/classes/MenuScene.js",
+        "src/classes/Manager.js",
+        "src/classes/Global.js",
+        "src/classes/gameplayLayer.js",
+        "src/classes/seaweed.js",
+        "src/classes/coral.js",
+        "src/classes/gameOverLayer.js",
+        "src/classes/pauseLayer.js"
     ]
 
 }
