@@ -16,6 +16,6 @@ var Collectible = cc.Sprite.extend({
 
     update:function(dt) {
 
-        this.setPositionX(this.x - currentSpeed);
+        //this.setPositionX(this.x - this.currentSpeed);
     }
 });
