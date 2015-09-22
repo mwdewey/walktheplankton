@@ -4,7 +4,7 @@
 var Collectible = cc.Sprite.extend({
 
     ctor:function(xx, yy){
-        this._super(res.rock1_png);
+        this._super(res.bubbles1_png);
         //this._super(res.bubbles1_png);
         this.x = xx;
         this.y = yy;
@@ -15,7 +15,6 @@ var Collectible = cc.Sprite.extend({
 
 
     update:function(dt) {
-
-        //this.setPositionX(this.x - this.currentSpeed);
+        this.setPositionX(this.x - currentSpeed);
     }
 });
