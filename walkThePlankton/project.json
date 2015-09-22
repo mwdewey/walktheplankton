@@ -23,6 +23,8 @@
         "src/classes/enumKeyCodes.js",
         "src/classes/backgroundlayer.js",
         "src/classes/obstacle.js",
+        "src/classes/obstacle2.js",
+        "src/classes/obstacle3.js",
         "src/classes/gameObjects.js",
         "src/classes/PauseScene.js",
       "src/classes/HUDLayer.js"

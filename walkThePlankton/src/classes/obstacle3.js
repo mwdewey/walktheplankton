@@ -1,10 +1,10 @@
 /**
- * Created by Mikes Gaming on 9/17/2015.
+ * Created by Collin on 9/21/2015.
  */
-var Obstacle = cc.Sprite.extend({
+var Obstacle3 = cc.Sprite.extend({
 
     ctor:function(xx, yy){
-        this._super(res.rock1_png);
+        this._super(res.rock3_png);
         this.x = xx;
         this.y = yy;
         this.scheduleUpdate();

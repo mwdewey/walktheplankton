@@ -27,13 +27,14 @@ var Scene1Layer = cc.Layer.extend({
 
         obstacles = new Array();
         for(var i = 0; i < 50; i++){
-            obstacle = new Obstacle(200, 200);
+            obstacle = new Obstacle2(200, 200);
             this.addChild(obstacle);
             obstacle.x = Math.random() * 100 + 300 * i; obstacle.y = 100 + Math.random() * 600;
+            //obstacle.setScale(.5, null);
             obstacles.push(obstacle);
         }
 
-        
+
 
         return true;
     }
