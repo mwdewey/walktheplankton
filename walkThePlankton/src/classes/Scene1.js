@@ -6,21 +6,14 @@ var Scene1Layer = cc.Layer.extend({
 
     ctor:function () {
         this._super();
-<<<<<<< HEAD
         this.init();
-=======
 
         planktonObject = new Plankton(400,400);
         this.addChild(planktonObject);
 
         planktonObject.x = 400; planktonObject.y = 400;
 
-
         currentSpeed = 5;
-
-
->>>>>>> development
-
 
         collectibles = new Array();
         for(var i = 0; i < 20; i++){
@@ -35,7 +28,6 @@ var Scene1Layer = cc.Layer.extend({
 
 
         obstacles = new Array();
-<<<<<<< HEAD
         obstacles.push(obstacle);
         obstacles.push(obstacle2);
         obstacles.push(obstacle3);
@@ -108,7 +100,7 @@ var HUDLayer = cc.Layer.extend({
         oAnim.setPosition(cc.p(cc.winSize.width/2,cc.winSize.height/2));
         oAnim.runAction(new cc.Animate(new cc.Animation([o1,o2], 1, 1000)));
         this.addChild(oAnim);
-=======
+
         for(var i = 0; i < 50; i++){
             obstacle = new Obstacle2(200, 200);
             this.addChild(obstacle);
@@ -116,9 +108,6 @@ var HUDLayer = cc.Layer.extend({
             //obstacle.setScale(.5, null);
             obstacles.push(obstacle);
         }
->>>>>>> development
-
-
 
         return true;
     }
