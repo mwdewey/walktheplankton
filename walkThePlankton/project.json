@@ -27,7 +27,7 @@
         "src/classes/obstacle3.js",
         "src/classes/gameObjects.js",
         "src/classes/PauseScene.js",
-      "src/classes/HUDLayer.js"
+        "src/classes/HUDLayer.js"
     ]
 
 }
