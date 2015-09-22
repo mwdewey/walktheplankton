@@ -13,9 +13,9 @@ var Plankton = cc.Sprite.extend({
         this.movingLeft = false;
         this.movingRight = false;
         this.distanceMoved = 0;
-        this.score = 0;
         //this.moveUp = cc.moveBy(0, cc.p(0,30));
 
+        /*
         cc.eventManager.addListener({
             event: cc.EventListener.KEYBOARD,
 
@@ -25,9 +25,12 @@ var Plankton = cc.Sprite.extend({
 
         }, this);
         this.scheduleUpdate();
+        */
+        this.scheduleUpdate();
 
     },
 
+        /*
     onKeyDown:function(key, event){
         var t=event.getCurrentTarget();
 
@@ -49,6 +52,8 @@ var Plankton = cc.Sprite.extend({
                 t.movingRight = true;
                 break;
             case enumKeyCodes.KEY_P:
+                cc.director.pause();
+                //cc.director.resume();
                 //cc.director.pushScene(new PauseScene()); BROKEN
                 break;
         }
@@ -79,6 +84,7 @@ var Plankton = cc.Sprite.extend({
                 break;
         }
     },
+    */
 
     update:function(dt) {
         this.checkCollectibleCollisions();
@@ -111,9 +117,10 @@ var Plankton = cc.Sprite.extend({
 
         //}
         for(var i = 0; i < collectibles.length; i++){
-            if(cc.rectIntersectsRect(planktonObject.getBoundingBox(), collectibles[i].getBoundingBox())){
-                this.score += collectibles[i].value;
-                cc.log(this.score);
+            if(cc.rectIntersectsRect(this.getBoundingBox(), collectibles[i].getBoundingBox())){
+                this.getParent().getParent().getChildByTag(TagOfLayer.hud).addScore(collectibles[i].value);
+                //this.score += collectibles[i].value;
+                //cc.log(this.score);
                 collectibles[i].removeFromParent(true);
                 collectibles.splice(i, 1);
             }
@@ -124,9 +131,9 @@ var Plankton = cc.Sprite.extend({
     checkObstacleCollisions:function(){
         for(var i = 0; i < obstacles.length; i++){
 
-            if(cc.rectIntersectsRect(planktonObject.getBoundingBox(),obstacles[i].getBoundingBox())){
+            if(cc.rectIntersectsRect(this.getBoundingBox(),obstacles[i].getBoundingBox())){
                 var b = obstacles[i].getBoundingBox();
-                var p = planktonObject.getBoundingBox();
+                var p = this.getBoundingBox();
                 var v = 5;
 
                 if(p.y < b.y - b.height/2 - v) this.setPositionY(b.y  - p.height/2 );    //BOTTOM
@@ -138,10 +145,17 @@ var Plankton = cc.Sprite.extend({
             //selse cc.log("MEEP");
 
         }
+    },
+
+    checkEnemyCollisions:function(){
+        for(var i = 0; i < obstacles.length; i++){
+
+            if(cc.rectIntersectsRect(this.getBoundingBox(),this.getParent().whaleSprite.getBoundingBox())){
+                console.log("hit whale");
+                cc.director.pause();
+                this.getParent().addChild(new GameOverLayer());
+            }
+        }
     }
-
-
-
-
 
 });

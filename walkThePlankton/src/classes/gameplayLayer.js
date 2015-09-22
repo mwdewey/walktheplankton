@@ -1,31 +1,53 @@
-var Scene1Layer = cc.Layer.extend({
+/**
+ * Created by Nanyou on 9/21/2015.
+ */
+
+var GameplayLayer = cc.Layer.extend({
     whaleSpriteSheet: null,
     munchAction: null,
     whaleSprite: null,
     planktonObject: null,
 
-    ctor:function () {
+    ctor: function () {
         this._super();
         this.init();
+    },
 
-        planktonObject = new Plankton(400,400);
-        this.addChild(planktonObject);
+    init: function () {
+        this._super();
 
-        planktonObject.x = 400; planktonObject.y = 400;
+        //generate terrain
+        var i;
+        for(i=0; i<15; i++)this.addChild(new Seaweed(i*100,100,0.25));
+        for(i=0; i<12; i++)this.addChild(new Coral(i*125,75,0.375));
+        for(i=0; i<10; i++)this.addChild(new Seaweed(i*150,50,0.50));
+        for(i=0; i<7; i++)this.addChild(new Coral(i*175,25,0.75));
+        for(i=0; i<5; i++)this.addChild(new Seaweed(i*200,0,1));
 
-        currentSpeed = 5;
+        //generate obstacles and collectibles
+        collect = new Collectible(200,200);
+        this.addChild(collect);
+        collect.x = 800; collect.y = 400;
+
+        collect2 = new Collectible(200,200);
+        this.addChild(collect2);
+        collect2.x = 300; collect2.y = 100;
 
         collectibles = new Array();
-        for(var i = 0; i < 20; i++){
-            collect = new Collectible(200, 200);
-            this.addChild(collect);
-            collect.x = Math.random() * 100 + 500 * i; collect.y = 100 + Math.random() * 600;
-            collect.setScale(.4, null);
-            collectibles.push(collect);
-        }
+        collectibles.push(collect);
+        collectibles.push(collect2);
 
+        obstacle = new Obstacle(200, 200);
+        this.addChild(obstacle);
+        obstacle.x = 1200; obstacle.y = 200;
 
+        obstacle2 = new Obstacle(200, 200);
+        this.addChild(obstacle2);
+        obstacle2.x = 1000; obstacle2.y = 200;
 
+        obstacle3 = new Obstacle(200, 200);
+        this.addChild(obstacle3);
+        obstacle3.x = 200; obstacle3.y = 400;
 
         obstacles = new Array();
         obstacles.push(obstacle);
@@ -35,16 +57,9 @@ var Scene1Layer = cc.Layer.extend({
         obstacles[0].runAction(cc.moveBy(15, cc.p(0, 500)));
         obstacles[1].runAction(cc.moveBy(15, cc.p(-800, 0)));
 
-        return true;
-    },
-
-    init: function () {
-        this._super();
-
-        this.planktonObject = new Plankton(400,400);
+        //create plankton object/sprite
+        this.planktonObject = new Plankton(600,400);
         this.addChild(this.planktonObject);
-
-        this.planktonObject.x = 400; this.planktonObject.y = 400;
 
         // create whale sprite sheet
         cc.spriteFrameCache.addSpriteFrames(res.whale_plist);
@@ -71,56 +86,23 @@ var Scene1Layer = cc.Layer.extend({
         this.whaleSprite = new cc.Sprite("#whale0.png");
         //create attributes for whale
         this.whaleSprite.attr({
-            x: 100,
+            x: 250,
             y: 85
         });
+        //run animation
         this.whaleSprite.runAction(this.munchAction);
         this.whaleSpriteSheet.addChild(this.whaleSprite);
 
+        this.scheduleUpdate();
+    },
+
+    update: function (dt) {
         //check if whale is in line with plankton
         if(this.whaleSprite.y != this.planktonObject.y) {
             //create move action
-            var follow = new cc.MoveTo(2, cc.p(100, this.planktonObject.y));
+            var follow = new cc.MoveTo(0, cc.p(this.whaleSprite.x, this.planktonObject.y));
             //run action on whale
             this.whaleSprite.runAction(new cc.Sequence(follow));
         }
-
-        this.scheduleUpdate();
     }
-});
-
-var HUDLayer = cc.Layer.extend({
-    ctor:function () {
-        this._super();
-
-        var oAnim = new cc.Sprite();
-        var o1 = new cc.SpriteFrame(res.CameraHud1_png, cc.rect(0,0,1600,900));
-        var o2 = new cc.SpriteFrame(res.CameraHud2_png, cc.rect(0,0,1600,900));
-
-        oAnim.setPosition(cc.p(cc.winSize.width/2,cc.winSize.height/2));
-        oAnim.runAction(new cc.Animate(new cc.Animation([o1,o2], 1, 1000)));
-        this.addChild(oAnim);
-
-        for(var i = 0; i < 50; i++){
-            obstacle = new Obstacle2(200, 200);
-            this.addChild(obstacle);
-            obstacle.x = Math.random() * 100 + 300 * i; obstacle.y = 100 + Math.random() * 600;
-            //obstacle.setScale(.5, null);
-            obstacles.push(obstacle);
-        }
-
-        return true;
-    }
-});
-
-var Scene1 = cc.Scene.extend({
-    onEnter:function () {
-        this._super();
-
-
-        this.addChild(new BackgroundLayer());
-        this.addChild(new Scene1Layer());
-        this.addChild(new HUDLayer());
-    }
-
 });

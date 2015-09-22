@@ -1,4 +1,8 @@
 var HUDLayer = cc.Layer.extend({
+    distanceLabel: null,
+    scoreLabel: null,
+    score: null,
+
     ctor:function () {
         this._super();
 
@@ -19,6 +23,33 @@ var HUDLayer = cc.Layer.extend({
         bAnim.runAction(new cc.Animate(new cc.Animation([b1,b2,b3], 10, 1000)));
         this.addChild(bAnim);
 
-        return true;
+        //get window size
+        var winSize = cc.director.getWinSize();
+        //set label initial text, font, font size
+        this.distanceLabel = new cc.LabelTTF("0M", "Helvetica", 50);
+        //set label color (black)
+        this.distanceLabel.setColor(cc.color(0, 0, 0));
+        //set label position on screen
+        this.distanceLabel.setPosition(cc.p(75, winSize.height - 200));
+        //add label to layer
+        this.addChild(this.distanceLabel);
+        //set label initial text, font, font size
+        this.scoreLabel = new cc.LabelTTF("Score: 0", "Helvetica", 50);
+        //set label color (black)
+        this.scoreLabel.setColor(cc.color(0, 0, 0));
+        //set label position on screen
+        this.scoreLabel.setPosition(cc.p(100, winSize.height - 250));
+        //add label to layer
+        this.addChild(this.scoreLabel);
+    },
+
+    updateDistance: function (pixels) {
+        //calculate distance by dividing pixels by 10 (10px = 1M)
+        this.labelDistance.setString(parseInt(px / 10) + "M");
+    },
+
+    addScore: function (num) {
+        this.score += num;
+        this.scoreLabel.setString("Score:" + this.score);
     }
 });
