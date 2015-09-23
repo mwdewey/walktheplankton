@@ -30,7 +30,10 @@ var res = {
     jellyfish_png: "res/Sprites/float.png",
     shrimp_plist: "res/Sprites/swim.plist",
     shrimp_png: "res/Sprites/swim.png",
-    collectible_png: "res/Sprites/collectible.png"
+    collectible_png: "res/Sprites/collectible.png",
+    music_mp3: "res/Sounds/another_chasing_theme_maybe.mp3",
+    collectible_mp3: "res/Sounds/collectible.mp3",
+    gameOver_mp3: "res/Sounds/game_over.wav"
 };
 
 var g_resources = [];

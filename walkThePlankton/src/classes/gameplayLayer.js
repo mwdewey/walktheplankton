@@ -31,7 +31,7 @@ var GameplayLayer = cc.Layer.extend({
 
     init: function () {
         this._super();
-
+        cc.audioEngine.playMusic(res.music_mp3, true);
         /*
         //create level1
         this.level1 = new cc.TMXTiledMap(res.level1_tmx);
@@ -117,7 +117,7 @@ var GameplayLayer = cc.Layer.extend({
             this.enemyFade = true;
             this.currentEnemy.runAction(new cc.Sequence(fade));
         }
-        if(p.distanceMovedAbsolute > 27000 && !this.enemyAppear && this.enemyFade && this.currentLevel == 2) {
+        if(p.distanceMovedAbsolute > 25000 && !this.enemyAppear && this.enemyFade && this.currentLevel == 2) {
             this.enemyAppear = true;
             this.enemyFade = false;
             this.currentEnemy.runAction(new cc.Sequence(appear));
@@ -125,20 +125,20 @@ var GameplayLayer = cc.Layer.extend({
         if(p.distanceMovedAbsolute > 28000 && this.enemyAppear && !this.enemyFade && this.currentLevel == 2) {
             this.enemyAppear = false;
         }
-        if(p.distanceMovedAbsolute > 49000 && !this.enemyFade && !this.enemyAppear && this.currentLevel == 2) {
+        if(p.distanceMovedAbsolute > 48000 && !this.enemyFade && !this.enemyAppear && this.currentLevel == 2) {
             this.enemyAppear = true;
             this.enemyFade = true;
             this.currentEnemy.runAction(new cc.Sequence(fade));
         }
-        if(p.distanceMovedAbsolute > 50500 && this.enemyAppear && this.enemyFade && this.currentLevel == 3) {
+        if(p.distanceMovedAbsolute > 49000 && this.enemyAppear && this.enemyFade && this.currentLevel == 3) {
             this.enemyAppear = false;
         }
-        if(p.distanceMovedAbsolute > 52000 && !this.enemyAppear && this.enemyFade && this.currentLevel == 3) {
+        if(p.distanceMovedAbsolute > 50000 && !this.enemyAppear && this.enemyFade && this.currentLevel == 3) {
             this.enemyAppear = true;
             this.enemyFade = false;
             this.currentEnemy.runAction(new cc.Sequence(appear));
         }
-        if(p.distanceMovedAbsolute > 54000 && this.currentLevel == 3) {
+        if(p.distanceMovedAbsolute > 52000 && this.currentLevel == 3) {
             this.enemyAppear = false;
         }
 
@@ -346,6 +346,9 @@ var GameplayLayer = cc.Layer.extend({
 
     planktonCollisionCheck: function(){
         if(!this.planktonObject.isOver && cc.rectIntersectsRect(this.planktonObject.getBoundingBox(), this.currentEnemy.getBoundingBox())){
+            cc.audioEngine.stopAllEffects();
+            cc.audioEngine.stopMusic(true);
+            cc.audioEngine.playEffect(res.gameOver_mp3, false);
             this.planktonObject.isOver = true;
             cc.director.pause();
             this.getParent().addChild(new GameOverLayer());

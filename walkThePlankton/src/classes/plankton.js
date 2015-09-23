@@ -74,6 +74,7 @@ var Plankton = cc.Sprite.extend({
                 //cc.log(this.score);
                 collectibles[i].removeFromParent(true);
                 collectibles.splice(i, 1);
+                cc.audioEngine.playEffect(res.collectible_mp3, false);
             }
 
         }

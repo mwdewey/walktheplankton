@@ -28,7 +28,7 @@ var HUDLayer = cc.Layer.extend({
         //set label initial text, font, font size
         this.distanceLabel = new cc.LabelTTF("0M", "Helvetica", 50);
         //set label color (black)
-        this.distanceLabel.setColor(cc.color(0, 0, 0));
+        this.distanceLabel.setColor(cc.color(200, 200, 200));
         //set label position on screen
         this.distanceLabel.setPosition(cc.p(200, winSize.height - 200));
         //add label to layer
@@ -36,7 +36,7 @@ var HUDLayer = cc.Layer.extend({
         //set label initial text, font, font size
         this.scoreLabel = new cc.LabelTTF("Score: 0", "Helvetica", 50);
         //set label color (black)
-        this.scoreLabel.setColor(cc.color(0, 0, 0));
+        this.scoreLabel.setColor(cc.color(200, 200, 200));
         //set label position on screen
         this.scoreLabel.setPosition(cc.p(200, winSize.height - 250));
         //add label to layer
@@ -44,11 +44,11 @@ var HUDLayer = cc.Layer.extend({
     },
 
     updateDistance: function (dt) {
-        this.distanceLabel.setString(dt + "M");
+        this.distanceLabel.setString(Math.round(dt/100) + "M");
     },
 
     addScore: function (num) {
         this.score += num;
-        this.scoreLabel.setString("Score:" + this.score);
+        this.scoreLabel.setString("Score: " + this.score);
     }
 });
