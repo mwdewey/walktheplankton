@@ -12,14 +12,16 @@ var Scene1Layer = cc.Layer.extend({
 
         story.setPosition(cc.p(cc.winSize.width/2,cc.winSize.height/2));
         var animation = new cc.Animation([s1,s2,s3], 5, 1);
+        var animate = new cc.Animate(animation);
         //story.runAction(new cc.Animate(animation));
         this.addChild(story);
 
-        var seq = new cc.Sequence (
-            story.runAction(new cc.Animate(animation)),
-            function(){cc.director.runScene(new Manager())}
-        );
-        this.runAction (seq);
+        var callbackRotate = new cc.CallFunc(function(){
+            cc.director.runScene(new Manager());
+        });
+
+        var seq = new cc.Sequence(animate,callbackRotate);
+        story.runAction(seq);
 
 
     },
