@@ -95,6 +95,8 @@ var GameplayLayer = cc.Layer.extend({
             this.Level3();
             p.scene3Gen = true;
         }
+
+        this.planktonCollisionCheck();
     },
 
     Level1: function(){
@@ -292,6 +294,14 @@ var GameplayLayer = cc.Layer.extend({
         this.whaleSpriteSheet.addChild(this.whaleSprite);
 
         this.currentEnemy = this.whaleSprite;
+    },
+
+    planktonCollisionCheck: function(){
+        if(!this.planktonObject.isOver && cc.rectIntersectsRect(this.planktonObject.getBoundingBox(), this.currentEnemy.getBoundingBox())){
+            this.planktonObject.isOver = true;
+            cc.director.pause();
+            this.getParent().addChild(new GameOverLayer());
+        }
     }
 
     /*
