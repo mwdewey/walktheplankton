@@ -76,7 +76,7 @@ var GameplayLayer = cc.Layer.extend({
         }
     },
 
-    Level1: function(dt){
+    Level1: function(){
         currentSpeed = 7;
         //generate obstacles and collectibles
         collectibles = new Array();
@@ -115,7 +115,7 @@ var GameplayLayer = cc.Layer.extend({
         }
     },
 
-    Level2: function(dt){
+    Level2: function(){
         currentSpeed = 7;
         //generate obstacles and collectibles
         collectibles = new Array();

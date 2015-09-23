@@ -13,6 +13,7 @@ var Plankton = cc.Sprite.extend({
         this.movingLeft = false;
         this.movingRight = false;
         this.distanceMoved = 0;
+        this.isCheat = false;
 
         this.scheduleUpdate();
 
@@ -49,7 +50,10 @@ var Plankton = cc.Sprite.extend({
             this.setPositionY(temp.height/2);
         }
 
-        this.checkObstacleCollisions();
+        if(!this.isCheat){
+            this.checkObstacleCollisions();
+        }
+
 
     },
 
