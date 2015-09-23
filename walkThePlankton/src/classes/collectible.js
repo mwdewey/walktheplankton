@@ -4,7 +4,7 @@
 var Collectible = cc.Sprite.extend({
 
     ctor:function(xx, yy){
-        this._super(res.bubbles1_png);
+        this._super(res.collectible_png);
         //this._super(res.bubbles1_png);
         this.x = xx;
         this.y = yy;

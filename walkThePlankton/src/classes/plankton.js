@@ -13,83 +13,20 @@ var Plankton = cc.Sprite.extend({
         this.movingLeft = false;
         this.movingRight = false;
         this.distanceMoved = 0;
-        //this.moveUp = cc.moveBy(0, cc.p(0,30));
+        this.distanceMovedAbsolute = 0;
 
-        /*
-        cc.eventManager.addListener({
-            event: cc.EventListener.KEYBOARD,
+        this.scene2Gen = false;
+        this.scene3Gen = false;
 
-            onKeyPressed:this.onKeyDown,
-            onKeyReleased:this.onKeyUp
-
-
-        }, this);
-        this.scheduleUpdate();
-        */
         this.scheduleUpdate();
 
     },
-
-        /*
-    onKeyDown:function(key, event){
-        var t=event.getCurrentTarget();
-
-        switch(key) {
-            case enumKeyCodes.KEY_Up:
-            case enumKeyCodes.KEY_W:
-                t.movingUp = true;
-                break;
-            case enumKeyCodes.KEY_Down:
-            case enumKeyCodes.KEY_S:
-                t.movingDown = true;
-                break;
-            case enumKeyCodes.KEY_Left:
-            case enumKeyCodes.KEY_A:
-                t.movingLeft = true;
-                break;
-            case enumKeyCodes.KEY_Right:
-            case enumKeyCodes.KEY_D:
-                t.movingRight = true;
-                break;
-            case enumKeyCodes.KEY_P:
-                cc.director.pause();
-                //cc.director.resume();
-                //cc.director.pushScene(new PauseScene()); BROKEN
-                break;
-        }
-
-
-
-    },
-
-    onKeyUp:function(key, event){
-        var t=event.getCurrentTarget();
-        switch(key) {
-
-            case enumKeyCodes.KEY_Up:
-            case enumKeyCodes.KEY_W:
-                t.movingUp = false;
-                break;
-            case enumKeyCodes.KEY_Down:
-            case enumKeyCodes.KEY_S:
-                t.movingDown = false;
-                break;
-            case enumKeyCodes.KEY_Left:
-            case enumKeyCodes.KEY_A:
-                t.movingLeft = false;
-                break;
-            case enumKeyCodes.KEY_Right:
-            case enumKeyCodes.KEY_D:
-                t.movingRight = false;
-                break;
-        }
-    },
-    */
 
     update:function(dt) {
         this.checkCollectibleCollisions();
         this.move();
-        this.distanceMoved+=dt * 2;
+        this.distanceMoved+=dt*2;
+        this.distanceMovedAbsolute+=currentSpeed;
     },
 
     move:function(){
@@ -108,6 +45,15 @@ var Plankton = cc.Sprite.extend({
         }
 
         this.runAction(cc.moveBy(0, cc.p(deltaX, deltaY)));
+        var temp = this.getBoundingBox();
+        if(temp.x + temp.width > 1600){
+            this.setPositionX(1600 - temp.width/2);
+        } else if(temp.y + temp.height > 900){
+            this.setPositionY(900 - temp.height/2);
+        } else if(temp.y  < 0){
+            this.setPositionY(temp.height/2);
+        }
+
         this.checkObstacleCollisions();
 
     },
