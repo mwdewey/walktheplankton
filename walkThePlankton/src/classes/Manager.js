@@ -48,8 +48,10 @@ var Manager = cc.Scene.extend({
                 t.gameLayer.getChildByTag(TagOfLayer.gameplay).planktonObject.movingRight = true;
                 break;
             case enumKeyCodes.KEY_P:
-                cc.director.pause();
-                t.gameLayer.getChildByTag(TagOfLayer.gameplay).addChild(new PauseLayer());
+                if(!cc.director.isPaused()) {
+                    cc.director.pause();
+                    t.gameLayer.getChildByTag(TagOfLayer.gameplay).addChild(new PauseLayer());
+                }
                 //cc.director.resume();
                 //cc.director.pushScene(new PauseScene()); BROKEN
                 break;

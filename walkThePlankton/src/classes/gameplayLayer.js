@@ -269,7 +269,7 @@ var GameplayLayer = cc.Layer.extend({
         collectibles = new Array();
         obstacles = new Array();
         var limit = 25000;
-        var currentDistance = 1200;
+        var currentDistance = 1600;
         var spacing = 800;
         while(currentDistance < limit)
         {
