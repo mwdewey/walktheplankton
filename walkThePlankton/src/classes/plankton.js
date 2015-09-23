@@ -27,7 +27,7 @@ var Plankton = cc.Sprite.extend({
         this.move();
         this.distanceMoved+=dt*2;
         this.distanceMovedAbsolute+=currentSpeed;
-        this.getParent().getParent().getChildByTag(TagOfLayer.hud).updateDistance(this.getPositionX() - 10);
+        this.getParent().getParent().getChildByTag(TagOfLayer.hud).updateDistance(this.distanceMovedAbsolute);
     },
 
     move:function(){

@@ -30,7 +30,7 @@ var HUDLayer = cc.Layer.extend({
         //set label color (black)
         this.distanceLabel.setColor(cc.color(0, 0, 0));
         //set label position on screen
-        this.distanceLabel.setPosition(cc.p(75, winSize.height - 200));
+        this.distanceLabel.setPosition(cc.p(200, winSize.height - 200));
         //add label to layer
         this.addChild(this.distanceLabel);
         //set label initial text, font, font size
@@ -38,7 +38,7 @@ var HUDLayer = cc.Layer.extend({
         //set label color (black)
         this.scoreLabel.setColor(cc.color(0, 0, 0));
         //set label position on screen
-        this.scoreLabel.setPosition(cc.p(100, winSize.height - 250));
+        this.scoreLabel.setPosition(cc.p(200, winSize.height - 250));
         //add label to layer
         this.addChild(this.scoreLabel);
     },

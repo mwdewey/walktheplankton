@@ -19,6 +19,7 @@ var GameplayLayer = cc.Layer.extend({
     levelIndex: 0,
     levelWidth: 0,
     objectSpriteSheet: null,
+    currentEnemy: null,
 
     ctor: function () {
         this._super();
@@ -71,94 +72,16 @@ var GameplayLayer = cc.Layer.extend({
         this.planktonObject = new Plankton(600,400);
         this.addChild(this.planktonObject);
 
-        // create whale sprite sheet
-        cc.spriteFrameCache.addSpriteFrames(res.whale_plist);
-        this.whaleSpriteSheet = new cc.SpriteBatchNode(res.whale_png);
-        this.addChild(this.whaleSpriteSheet);
-
-        //create spriteframe array
-        var animFrames = [];
-        //loop through frames in sprite sheet and add them to frame array
-        for (var i = 0; i < 2; i++) {
-            //generate sprite filename
-            var str = "whale" + i + ".png";
-            //get sprite frame from sprite sheet
-            var frame = cc.spriteFrameCache.getSpriteFrame(str);
-            //add sprite frame to array
-            animFrames.push(frame);
-        }
-
-        //create animation with spriteframe array with a time period to display each frame
-        var animation = new cc.Animation(animFrames, 0.1);
-        //wrap animate action with repeat forever action to make animation continuous
-        this.munchAction = new cc.RepeatForever(new cc.Animate(animation));
-        //create whale sprite using frame's title with #
-        this.whaleSprite = new cc.Sprite("#whale0.png");
-        //create attributes for whale
-        this.whaleSprite.attr({
-            x: 250,
-            y: 85
-        });
-        //run animation
-        this.whaleSprite.runAction(this.munchAction);
-        this.whaleSpriteSheet.addChild(this.whaleSprite);
-
-        //create jellyfish sprite sheet
-        cc.spriteFrameCache.addSpriteFrames(res.jellyfish_plist);
-        this.jellyfishSpriteSheet = new cc.SpriteBatchNode(res.jellyfish_png);
-        this.addChild(this.jellyfishSpriteSheet);
-
-        //create sprite frame array
-        var janimFrames = [];
-        for(var i = 0; i < 2; i++) {
-            var str = "jellyfish" + i + ".png";
-            var frame = cc.spriteFrameCache.getSpriteFrame(str);
-            janimFrames.push(frame);
-        }
-
-        var janimation = new cc.Animation(janimFrames, 0.1);
-        this.floatAction = new cc.RepeatForever(new cc.Animate(janimation));
-        this.jellyfishSprite = new cc.Sprite("#jellyfish0.png");
-        this.jellyfishSprite.attr({
-            x: 200,
-            y: 20
-        });
-        this.jellyfishSprite.runAction(this.floatAction);
-        this.jellyfishSpriteSheet.addChild(this.jellyfishSprite);
-
-        //create shrimp sprite sheet
-        cc.spriteFrameCache.addSpriteFrames(res.shrimp_plist);
-        this.shrimpSpriteSheet = new cc.SpriteBatchNode(res.shrimp_png);
-        this.addChild(this.shrimpSpriteSheet);
-
-        //create sprite frame array
-        var sanimFrames = [];
-        for(var i = 0; i < 2; i++) {
-            var str = "shrimp" + i + ".png";
-            var frame = cc.spriteFrameCache.getSpriteFrame(str);
-            sanimFrames.push(frame);
-        }
-
-        var sanimation = new cc.Animation(sanimFrames, 0.1);
-        this.swimAction = new cc.RepeatForever(new cc.Animate(sanimation));
-        this.shrimpSprite = new cc.Sprite("#shrimp0.png");
-        this.shrimpSprite.attr({
-            x: 200,
-            y: 700
-        });
-        this.shrimpSprite.runAction(this.swimAction);
-        this.shrimpSpriteSheet.addChild(this.shrimpSprite);
-
         this.scheduleUpdate();
     },
 
     update: function (dt) {
-        //check if whale is in line with plankton
-        if(this.whaleSprite.y != this.planktonObject.y) {
+        //check if enemy is in line with plankton
+        if(this.currentEnemy.y != this.planktonObject.y) {
             //create move action
-            var follow = new cc.MoveTo(0, cc.p(this.whaleSprite.x, this.planktonObject.y));
-            //run action on whale
-            this.whaleSprite.runAction(new cc.Sequence(follow));
+            var follow = new cc.MoveTo(0, cc.p(this.currentEnemy.x, this.planktonObject.y));
+            //run action on enemy
+            this.currentEnemy.runAction(new cc.Sequence(follow));
         }
 
         var p = this.planktonObject;
@@ -172,7 +95,6 @@ var GameplayLayer = cc.Layer.extend({
             this.Level3();
             p.scene3Gen = true;
         }
-
     },
 
     Level1: function(){
@@ -212,6 +134,31 @@ var GameplayLayer = cc.Layer.extend({
             obstacle.setScale(1, null);
             obstacles.push(obstacle);
         }
+
+        //create shrimp sprite sheet
+        cc.spriteFrameCache.addSpriteFrames(res.shrimp_plist);
+        this.shrimpSpriteSheet = new cc.SpriteBatchNode(res.shrimp_png);
+        this.addChild(this.shrimpSpriteSheet);
+
+        //create sprite frame array
+        var sanimFrames = [];
+        for(var i = 0; i < 2; i++) {
+            var str = "shrimp" + i + ".png";
+            var frame = cc.spriteFrameCache.getSpriteFrame(str);
+            sanimFrames.push(frame);
+        }
+
+        var sanimation = new cc.Animation(sanimFrames, 0.1);
+        this.swimAction = new cc.RepeatForever(new cc.Animate(sanimation));
+        this.shrimpSprite = new cc.Sprite("#shrimp0.png");
+        this.shrimpSprite.attr({
+            x: 200,
+            y: 700
+        });
+        this.shrimpSprite.runAction(this.swimAction);
+        this.shrimpSpriteSheet.addChild(this.shrimpSprite);
+
+        this.currentEnemy = this.shrimpSprite;
     },
 
     Level2: function(){
@@ -251,8 +198,37 @@ var GameplayLayer = cc.Layer.extend({
             obstacle.setScale(1, null);
             obstacles.push(obstacle);
         }
+
+        this.removeChild(this.shrimpSpriteSheet);
+
+        //create jellyfish sprite sheet
+        cc.spriteFrameCache.addSpriteFrames(res.jellyfish_plist);
+        this.jellyfishSpriteSheet = new cc.SpriteBatchNode(res.jellyfish_png);
+        this.addChild(this.jellyfishSpriteSheet);
+
+        //create sprite frame array
+        var janimFrames = [];
+        for(var i = 0; i < 2; i++) {
+            var str = "jellyfish" + i + ".png";
+            var frame = cc.spriteFrameCache.getSpriteFrame(str);
+            janimFrames.push(frame);
+        }
+
+        var janimation = new cc.Animation(janimFrames, 0.1);
+        this.floatAction = new cc.RepeatForever(new cc.Animate(janimation));
+        this.jellyfishSprite = new cc.Sprite("#jellyfish0.png");
+        this.jellyfishSprite.attr({
+            x: 200,
+            y: 20
+        });
+        this.jellyfishSprite.runAction(this.floatAction);
+        this.jellyfishSpriteSheet.addChild(this.jellyfishSprite);
+
+        this.currentEnemy = this.jellyfishSprite;
     },
+
     Level3: function(){
+        collectibles = new Array();
         obstacles = new Array();
         var limit = 25000;
         var currentDistance = 1200;
@@ -280,6 +256,42 @@ var GameplayLayer = cc.Layer.extend({
 
             currentDistance += spacing+randSpace;
         }
+
+        this.removeChild(this.jellyfishSpriteSheet);
+
+        // create whale sprite sheet
+        cc.spriteFrameCache.addSpriteFrames(res.whale_plist);
+        this.whaleSpriteSheet = new cc.SpriteBatchNode(res.whale_png);
+        this.addChild(this.whaleSpriteSheet);
+
+        //create spriteframe array
+        var animFrames = [];
+        //loop through frames in sprite sheet and add them to frame array
+        for (var i = 0; i < 2; i++) {
+            //generate sprite filename
+            var str = "whale" + i + ".png";
+            //get sprite frame from sprite sheet
+            var frame = cc.spriteFrameCache.getSpriteFrame(str);
+            //add sprite frame to array
+            animFrames.push(frame);
+        }
+
+        //create animation with spriteframe array with a time period to display each frame
+        var animation = new cc.Animation(animFrames, 0.1);
+        //wrap animate action with repeat forever action to make animation continuous
+        this.munchAction = new cc.RepeatForever(new cc.Animate(animation));
+        //create whale sprite using frame's title with #
+        this.whaleSprite = new cc.Sprite("#whale0.png");
+        //create attributes for whale
+        this.whaleSprite.attr({
+            x: 250,
+            y: 85
+        });
+        //run animation
+        this.whaleSprite.runAction(this.munchAction);
+        this.whaleSpriteSheet.addChild(this.whaleSprite);
+
+        this.currentEnemy = this.whaleSprite;
     }
 
     /*
