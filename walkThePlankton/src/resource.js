@@ -26,6 +26,10 @@ var res = {
     whale_plist: "res/Sprites/munch.plist",
     restartButtonNormal: "res/restart_n.png",
     restartButtonSelect: "res/restart_s.png",
+    jellyfish_plist: "res/Sprites/float.plist",
+    jellyfish_png: "res/Sprites/float.png",
+    shrimp_plist: "res/Sprites/swim.plist",
+    shrimp_png: "res/Sprites/swim.png",
     collectible_png: "res/Sprites/collectible.png"
 };
 
