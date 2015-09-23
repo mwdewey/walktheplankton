@@ -29,7 +29,8 @@ var res = {
     jellyfish_plist: "res/Sprites/float.plist",
     jellyfish_png: "res/Sprites/float.png",
     shrimp_plist: "res/Sprites/swim.plist",
-    shrimp_png: "res/Sprites/swim.png"
+    shrimp_png: "res/Sprites/swim.png",
+    collectible_png: "res/Sprites/collectible.png"
 };
 
 var g_resources = [];

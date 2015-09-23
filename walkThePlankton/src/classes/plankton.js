@@ -13,78 +13,9 @@ var Plankton = cc.Sprite.extend({
         this.movingLeft = false;
         this.movingRight = false;
         this.distanceMoved = 0;
-        //this.moveUp = cc.moveBy(0, cc.p(0,30));
 
-        /*
-        cc.eventManager.addListener({
-            event: cc.EventListener.KEYBOARD,
-
-            onKeyPressed:this.onKeyDown,
-            onKeyReleased:this.onKeyUp
-
-
-        }, this);
         this.scheduleUpdate();
-        */
-        this.scheduleUpdate();
-
     },
-
-        /*
-    onKeyDown:function(key, event){
-        var t=event.getCurrentTarget();
-
-        switch(key) {
-            case enumKeyCodes.KEY_Up:
-            case enumKeyCodes.KEY_W:
-                t.movingUp = true;
-                break;
-            case enumKeyCodes.KEY_Down:
-            case enumKeyCodes.KEY_S:
-                t.movingDown = true;
-                break;
-            case enumKeyCodes.KEY_Left:
-            case enumKeyCodes.KEY_A:
-                t.movingLeft = true;
-                break;
-            case enumKeyCodes.KEY_Right:
-            case enumKeyCodes.KEY_D:
-                t.movingRight = true;
-                break;
-            case enumKeyCodes.KEY_P:
-                cc.director.pause();
-                //cc.director.resume();
-                //cc.director.pushScene(new PauseScene()); BROKEN
-                break;
-        }
-
-
-
-    },
-
-    onKeyUp:function(key, event){
-        var t=event.getCurrentTarget();
-        switch(key) {
-
-            case enumKeyCodes.KEY_Up:
-            case enumKeyCodes.KEY_W:
-                t.movingUp = false;
-                break;
-            case enumKeyCodes.KEY_Down:
-            case enumKeyCodes.KEY_S:
-                t.movingDown = false;
-                break;
-            case enumKeyCodes.KEY_Left:
-            case enumKeyCodes.KEY_A:
-                t.movingLeft = false;
-                break;
-            case enumKeyCodes.KEY_Right:
-            case enumKeyCodes.KEY_D:
-                t.movingRight = false;
-                break;
-        }
-    },
-    */
 
     update:function(dt) {
         this.checkCollectibleCollisions();
@@ -108,9 +39,18 @@ var Plankton = cc.Sprite.extend({
             deltaX += 2;
         }
 
+        this.runAction(cc.moveBy(0, cc.p(deltaX, deltaY)));
+        var temp = this.getBoundingBox();
+        if(temp.x + temp.width > 1600){
+            this.setPositionX(1600 - temp.width/2);
+        } else if(temp.y + temp.height > 900){
+            this.setPositionY(900 - temp.height/2);
+        } else if(temp.y  < 0){
+            this.setPositionY(temp.height/2);
+        }
 
         this.checkObstacleCollisions();
-        this.runAction(cc.moveBy(0, cc.p(deltaX, deltaY)));
+
     },
 
     checkCollectibleCollisions:function(){
@@ -135,12 +75,12 @@ var Plankton = cc.Sprite.extend({
             if(cc.rectIntersectsRect(this.getBoundingBox(),obstacles[i].getBoundingBox())){
                 var b = obstacles[i].getBoundingBox();
                 var p = this.getBoundingBox();
-                var v = 5;
+                var v = 10;
 
-                if(p.y < b.y - b.height/2 - v) this.setPositionY(b.y  - p.height/2 );    //BOTTOM
-                else if (p.y > b.y + b.height/2 + v) this.setPositionY(b.y+ b.height + p.height/2); //TOP
-                else if (p.x < b.x - b.width/2 - v) this.setPositionX(b.x - p.width/2);       //LEFT
-                else if (p.x > b.x + b.width/2 + v) this.setPositionX(b.x + b.width + p.width/2); //RIGHT
+                if(p.y + p.height < b.y + v) this.setPositionY(b.y  - p.height + p.height/2);    //BOTTOM
+                else if (p.y > b.y + b.height - v) this.setPositionY(b.y+ b.height + p.height/2); //TOP
+                else if (p.x + p.width < b.x + v) this.setPositionX(b.x - p.width + p.width/2);       //LEFT
+                else if (p.x > b.x + b.width - v) this.setPositionX(b.x + b.width + p.width/2); //RIGHT
                 //else this.setPositionX(b.x - p.width/2);
             }
             //selse cc.log("MEEP");
