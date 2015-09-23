@@ -25,25 +25,7 @@ var GameplayLayer = cc.Layer.extend({
         for(i=0; i<5; i++)this.addChild(new Seaweed(i*200,0,1));
 
 
-        currentSpeed = 5;
-        //generate obstacles and collectibles
-        collectibles = new Array();
-        for(var i = 0; i < 50; i++){
-            collect = new Collectible(200, 200);
-            this.addChild(collect);
-            collect.x = Math.random() * 100 + 500 * i; collect.y = 100 + Math.random() * 600;
-            collect.setScale(.4, null);
-            collectibles.push(collect);
-            cc.log(i);
-        }
-        obstacles = new Array();
-        for(var i = 0; i < 50; i++){
-            obstacle = new Obstacle(200, 200);
-            this.addChild(obstacle);
-            obstacle.x = Math.random() * 100 + 300 * i; obstacle.y = 100 + Math.random() * 600;
-            obstacle.setScale(1, null);
-            obstacles.push(obstacle);
-        }
+        this.Level1();
 
         //create plankton object/sprite
         this.planktonObject = new Plankton(600,400);
@@ -91,6 +73,45 @@ var GameplayLayer = cc.Layer.extend({
             var follow = new cc.MoveTo(0, cc.p(this.whaleSprite.x, this.planktonObject.y));
             //run action on whale
             this.whaleSprite.runAction(new cc.Sequence(follow));
+        }
+    },
+
+    Level1: function(dt){
+        currentSpeed = 7;
+        //generate obstacles and collectibles
+        collectibles = new Array();
+        obstacles = new Array();
+        for(var i = 0; i < 40; i++){
+            collect = new Collectible(200, 200);
+            this.addChild(collect);
+            collect.x = Math.random() * 100 + 500 * i + 1600; collect.y = 100 + Math.random() * 600;
+            //collect.setScale(.4, null);
+            collectibles.push(collect);
+            cc.log(i);
+        }
+
+        for(var i = 0; i < 35; i++){
+            obstacle = new Obstacle2(200, 200);
+            this.addChild(obstacle);
+            obstacle.x = Math.random() * 100 + 600 * i+ 1600; obstacle.y = 50 + Math.random() * 800;
+            obstacle.setScale(1, null);
+            obstacles.push(obstacle);
+        }
+
+        for(var i = 0; i < 22; i++){
+            obstacle = new Obstacle(200, 200);
+            this.addChild(obstacle);
+            obstacle.x = Math.random() * 400 + 1000 * i + 1600; obstacle.y = 50 + Math.random() * 800;
+            obstacle.setScale(1, null);
+            obstacles.push(obstacle);
+        }
+
+        for(var i = 0; i < 11; i++){
+            obstacle = new Obstacle3(200, 200);
+            this.addChild(obstacle);
+            obstacle.x = Math.random() * 800 + 2000 * i + 1600; obstacle.y = 50 + Math.random() * 800;
+            obstacle.setScale(1, null);
+            obstacles.push(obstacle);
         }
     }
 });
