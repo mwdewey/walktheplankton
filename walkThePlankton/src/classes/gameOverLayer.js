@@ -20,13 +20,25 @@ var GameOverLayer = cc.LayerColor.extend({
             this.onRestart,
             this
         );
+        var menuItemGG = new cc.MenuItemSprite(
+            new cc.Sprite(res.gameOver_png),
+            new cc.Sprite(res.gameOver_png),
+            this.nothing,
+            this
+        );
         var menu = new cc.Menu(menuItemRestart);
+        var menu2 = new cc.Menu(menuItemGG);
+        menu2.setPosition(cc.p(centerPos.x, centerPos.y + 200));
         menu.setPosition(centerPos);
         this.addChild(menu);
+        this.addChild(menu2);
     },
     onRestart: function (caller) {
         cc.director.resume();
         cc.director.runScene(new Manager());
         cc.director.resume();
+    },
+    nothing: function () {
+
     }
 });

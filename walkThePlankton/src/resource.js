@@ -24,8 +24,10 @@ var res = {
     startButtonSelect: "res/start_selected.png",
     whale_png: "res/Sprites/munch.png",
     whale_plist: "res/Sprites/munch.plist",
-    restartButtonNormal: "res/restart_n.png",
-    restartButtonSelect: "res/restart_s.png",
+    restartButtonNormal: "res/restart_normal.png",
+    restartButtonSelect: "res/restart_selected.png",
+    resumeButtonNormal: "res/resume_normal.png",
+    resumeButtonSelect: "res/resume_selected.png",
     jellyfish_plist: "res/Sprites/float.plist",
     jellyfish_png: "res/Sprites/float.png",
     shrimp_plist: "res/Sprites/swim.plist",
@@ -39,7 +41,8 @@ var res = {
     op3_png: "res/op3.png",
     end_png: "res/end.png",
     button_mp3: "res/Sounds/pause_resume_button_sound.wav",
-    text_png: "res/game over_fabulous.png"
+    text_png: "res/game over_fabulous.png",
+    gameOver_png: "res/game over_white.png"
 };
 
 var g_resources = [];

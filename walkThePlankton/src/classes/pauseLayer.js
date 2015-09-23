@@ -15,8 +15,8 @@ var PauseLayer = cc.LayerColor.extend({
         var centerPos  = cc.p(winSize.width / 2, winSize.height / 2);
         cc.MenuItemFont.setFontSize(50);
         var menuItemResume = new cc.MenuItemSprite(
-            new cc.Sprite(res.restartButtonNormal),
-            new cc.Sprite(res.restartButtonSelect),
+            new cc.Sprite(res.resumeButtonNormal),
+            new cc.Sprite(res.resumeButtonSelect),
             this.onResume,
             this
         );
