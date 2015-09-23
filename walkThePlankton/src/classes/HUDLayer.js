@@ -43,9 +43,8 @@ var HUDLayer = cc.Layer.extend({
         this.addChild(this.scoreLabel);
     },
 
-    updateDistance: function (pixels) {
-        //calculate distance by dividing pixels by 10 (10px = 1M)
-        this.labelDistance.setString(parseInt(px / 10) + "M");
+    updateDistance: function (dt) {
+        this.distanceLabel.setString(dt + "M");
     },
 
     addScore: function (num) {
