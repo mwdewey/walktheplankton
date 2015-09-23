@@ -18,6 +18,7 @@ var Plankton = cc.Sprite.extend({
         this.scene2Gen = false;
         this.scene3Gen = false;
         this.isCheat = false;
+        this.isOver = false;
 
         this.scheduleUpdate();
     },
@@ -92,19 +93,7 @@ var Plankton = cc.Sprite.extend({
                 else if (p.x > b.x + b.width - v) this.setPositionX(b.x + b.width + p.width/2); //RIGHT
                 //else this.setPositionX(b.x - p.width/2);
             }
-            //selse cc.log("MEEP");
 
-        }
-    },
-
-    checkEnemyCollisions:function(){
-        for(var i = 0; i < obstacles.length; i++){
-
-            if(cc.rectIntersectsRect(this.getBoundingBox(),this.getParent().whaleSprite.getBoundingBox())){
-                console.log("hit whale");
-                cc.director.pause();
-                this.getParent().addChild(new GameOverLayer());
-            }
         }
     }
 
