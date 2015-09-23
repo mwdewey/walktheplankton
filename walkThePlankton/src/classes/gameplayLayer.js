@@ -36,13 +36,33 @@ var GameplayLayer = cc.Layer.extend({
             collectibles.push(collect);
             cc.log(i);
         }
+
         obstacles = new Array();
-        for(var i = 0; i < 50; i++){
-            obstacle = new Obstacle(200, 200);
-            this.addChild(obstacle);
-            obstacle.x = Math.random() * 100 + 300 * i; obstacle.y = 100 + Math.random() * 600;
-            obstacle.setScale(1, null);
-            obstacles.push(obstacle);
+        var limit = 20000;
+        var currentDistance = 1200;
+        var spacing = 800;
+        while(currentDistance < limit)
+        {
+            var randSpace = Math.random()*200;
+            var xPos = currentDistance;
+            var spaceIndex = Math.floor(Math.random()*8);
+
+            for(var i=0; i<8; i++)
+            {
+                if(spaceIndex != i)
+                {
+                    var obstacle = new Obstacle2(200, 200);
+                    this.addChild(obstacle);
+
+                    obstacle.x = xPos+randSpace;
+                    obstacle.y = obstacle.height/2 + obstacle.height * i;
+
+                    obstacle.setScale(1, null);
+                    obstacles.push(obstacle);
+                }
+            }
+
+            currentDistance += spacing+randSpace;
         }
 
         //create plankton object/sprite
