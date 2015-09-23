@@ -122,7 +122,7 @@ var GameplayLayer = cc.Layer.extend({
             this.enemyFade = false;
             this.currentEnemy.runAction(new cc.Sequence(appear));
         }
-        if(p.distanceMovedAbsolute > 28000 && this.enemyAppear && !this.enemyFade && this.currentLevel == 2) {
+        if(p.distanceMovedAbsolute > 26000 && this.enemyAppear && !this.enemyFade && this.currentLevel == 2) {
             this.enemyAppear = false;
         }
         if(p.distanceMovedAbsolute > 48000 && !this.enemyFade && !this.enemyAppear && this.currentLevel == 2) {
@@ -138,7 +138,7 @@ var GameplayLayer = cc.Layer.extend({
             this.enemyFade = false;
             this.currentEnemy.runAction(new cc.Sequence(appear));
         }
-        if(p.distanceMovedAbsolute > 52000 && this.currentLevel == 3) {
+        if(p.distanceMovedAbsolute > 51500 && this.currentLevel == 3) {
             this.enemyAppear = false;
         }
         if(p.distanceMovedAbsolute > 74000){
