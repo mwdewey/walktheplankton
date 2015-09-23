@@ -141,8 +141,19 @@ var GameplayLayer = cc.Layer.extend({
         if(p.distanceMovedAbsolute > 52000 && this.currentLevel == 3) {
             this.enemyAppear = false;
         }
+        if(p.distanceMovedAbsolute > 74000){
+            this.currentEnemy.runAction(new cc.Sequence(fade));
+        }
+        if(p.distanceMovedAbsolute > 74500){
+            this.enemyAppear=false;
+            cc.log("end");
+        }
 
         this.planktonCollisionCheck();
+
+
+
+
     },
 
     Level1: function(){

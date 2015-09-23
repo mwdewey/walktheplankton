@@ -33,8 +33,9 @@ var MenuLayer = cc.Layer.extend({
     //this function is called when play button is clicked
     onPlay: function () {
         cc.log("==onplay clicked");
+        cc.audioEngine.playEffect(res.button_mp3, false);
         //create and switch to play scene
-        cc.director.runScene(new Manager());
+        cc.director.runScene(new Scene1());
     }
 });
 

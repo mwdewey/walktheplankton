@@ -33,7 +33,12 @@ var res = {
     collectible_png: "res/Sprites/collectible.png",
     music_mp3: "res/Sounds/another_chasing_theme_maybe.mp3",
     collectible_mp3: "res/Sounds/collectible.mp3",
-    gameOver_mp3: "res/Sounds/game_over.wav"
+    gameOver_mp3: "res/Sounds/game_over.wav",
+    op1_png: "res/op1.png",
+    op2_png: "res/op2.png",
+    op3_png: "res/op3.png",
+    end_png: "res/end.png",
+    button_mp3: "res/Sounds/pause_resume_button_sound.wav"
 };
 
 var g_resources = [];
