@@ -64,6 +64,9 @@ var Manager = cc.Scene.extend({
             case enumKeyCodes.KEY_F3:
                 t.gameLayer.getChildByTag(TagOfLayer.gameplay).planktonObject.distanceMovedAbsolute = 48000;
                 break;
+            case enumKeyCodes.KEY_F4:
+                t.gameLayer.getChildByTag(TagOfLayer.gameplay).planktonObject.distanceMovedAbsolute = 70000;
+                break;
 
         }
     },

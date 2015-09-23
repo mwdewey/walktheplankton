@@ -38,7 +38,8 @@ var res = {
     op2_png: "res/op2.png",
     op3_png: "res/op3.png",
     end_png: "res/end.png",
-    button_mp3: "res/Sounds/pause_resume_button_sound.wav"
+    button_mp3: "res/Sounds/pause_resume_button_sound.wav",
+    text_png: "res/game over_fabulous.png"
 };
 
 var g_resources = [];

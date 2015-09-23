@@ -1,26 +1,33 @@
 var Scene2Layer = cc.Layer.extend({
-    ctor:function () {
+
+    onEnter:function () {
         this._super();
+        var winSize = cc.director.getWinSize();
+        var centerPos = cc.p(winSize.width / 2, winSize.height / 2);
+        var spriteBG = new cc.Sprite(res.end_png);
 
-        cc.eventManager.addListener(
-            cc.EventListener.create({
-                event: cc.EventListener.KEYBOARD,
-                onKeyPressed: null,
-                onKeyReleased: this.onKeyReleased
-            }),this);
+        var spriteSM = new cc.Sprite(res.Plankton_png);
 
-        var startLabel = new cc.LabelTTF("YAY more scenes!", "Segoe UI", 40);
-        startLabel.x = cc.winSize.width/2;
-        startLabel.y = cc.winSize.height/2;
+        var spriteText = new cc.Sprite(res.text_png);
 
-        this.addChild(startLabel);
+        spriteSM.setPosition(cc.p(winSize.width/2 - 200, winSize.height/2 -100));
+        spriteText.setPosition(cc.p(winSize.width/2 - 200, winSize.height/2 +100));
+        spriteBG.setPosition(centerPos);
 
-        return true;
+        this.addChild(spriteBG);
+        this.addChild(spriteText);
+        this.addChild(spriteSM);
+
+
+
     },
-    onKeyReleased:function (event){
-        cc.director.runScene(new Scene0());
 
-        return true;
+    init: function () {
+
+    },
+
+    update: function(dt){
+
     }
 });
 

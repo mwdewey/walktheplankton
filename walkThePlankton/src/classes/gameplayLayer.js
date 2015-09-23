@@ -144,9 +144,12 @@ var GameplayLayer = cc.Layer.extend({
         if(p.distanceMovedAbsolute > 74000){
             this.currentEnemy.runAction(new cc.Sequence(fade));
         }
-        if(p.distanceMovedAbsolute > 74500){
+        if(p.distanceMovedAbsolute > 74400){
             this.enemyAppear=false;
-            cc.log("end");
+            this.currentEnemy.removeFromParent(true);
+        }
+        if(p.distanceMovedAbsolute > 75500){
+            cc.director.runScene(new cc.TransitionFade(1, new Scene2()));
         }
 
         this.planktonCollisionCheck();
