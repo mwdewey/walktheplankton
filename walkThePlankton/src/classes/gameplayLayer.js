@@ -20,6 +20,9 @@ var GameplayLayer = cc.Layer.extend({
     levelWidth: 0,
     objectSpriteSheet: null,
     currentEnemy: null,
+    enemyFade: false,
+    enemyAppear: false,
+    currentLevel: 1,
 
     ctor: function () {
         this._super();
@@ -77,7 +80,7 @@ var GameplayLayer = cc.Layer.extend({
 
     update: function (dt) {
         //check if enemy is in line with plankton
-        if(this.currentEnemy.y != this.planktonObject.y) {
+        if(this.currentEnemy.y != this.planktonObject.y && !this.enemyFade && !this.enemyAppear) {
             //create move action
             var follow = new cc.MoveTo(0, cc.p(this.currentEnemy.x, this.planktonObject.y));
             //run action on enemy
@@ -94,6 +97,37 @@ var GameplayLayer = cc.Layer.extend({
         {
             this.Level3();
             p.scene3Gen = true;
+        }
+
+        var fade = new cc.MoveTo(2, cc.p(-1000, 0));
+        var appear = new cc.MoveTo(2, cc.p(200, p.y));
+        if(p.distanceMovedAbsolute > 24000 && !this.enemyFade && this.currentLevel == 1) {
+            this.enemyFade = true;
+            this.currentEnemy.runAction(new cc.Sequence(fade));
+        }
+        if(p.distanceMovedAbsolute > 27000 && !this.enemyAppear && this.enemyFade && this.currentLevel == 2) {
+            this.enemyAppear = true;
+            this.enemyFade = false;
+            this.currentEnemy.runAction(new cc.Sequence(appear));
+        }
+        if(p.distanceMovedAbsolute > 28000 && this.enemyAppear && !this.enemyFade && this.currentLevel == 2) {
+            this.enemyAppear = false;
+        }
+        if(p.distanceMovedAbsolute > 49000 && !this.enemyFade && !this.enemyAppear && this.currentLevel == 2) {
+            this.enemyAppear = true;
+            this.enemyFade = true;
+            this.currentEnemy.runAction(new cc.Sequence(fade));
+        }
+        if(p.distanceMovedAbsolute > 50500 && this.enemyAppear && this.enemyFade && this.currentLevel == 3) {
+            this.enemyAppear = false;
+        }
+        if(p.distanceMovedAbsolute > 52000 && !this.enemyAppear && this.enemyFade && this.currentLevel == 3) {
+            this.enemyAppear = true;
+            this.enemyFade = false;
+            this.currentEnemy.runAction(new cc.Sequence(appear));
+        }
+        if(p.distanceMovedAbsolute > 54000 && this.currentLevel == 3) {
+            this.enemyAppear = false;
         }
 
         this.planktonCollisionCheck();
@@ -164,6 +198,7 @@ var GameplayLayer = cc.Layer.extend({
     },
 
     Level2: function(){
+        this.currentLevel = 2;
         currentSpeed = 7;
         //generate obstacles and collectibles
         collectibles = new Array();
@@ -220,7 +255,7 @@ var GameplayLayer = cc.Layer.extend({
         this.floatAction = new cc.RepeatForever(new cc.Animate(janimation));
         this.jellyfishSprite = new cc.Sprite("#jellyfish0.png");
         this.jellyfishSprite.attr({
-            x: 200,
+            x: -500,
             y: 20
         });
         this.jellyfishSprite.runAction(this.floatAction);
@@ -230,6 +265,7 @@ var GameplayLayer = cc.Layer.extend({
     },
 
     Level3: function(){
+        this.currentLevel = 3;
         collectibles = new Array();
         obstacles = new Array();
         var limit = 25000;
@@ -286,7 +322,7 @@ var GameplayLayer = cc.Layer.extend({
         this.whaleSprite = new cc.Sprite("#whale0.png");
         //create attributes for whale
         this.whaleSprite.attr({
-            x: 250,
+            x: -500,
             y: 85
         });
         //run animation
