@@ -53,6 +53,7 @@ var Manager = cc.Scene.extend({
                 //cc.director.resume();
                 //cc.director.pushScene(new PauseScene()); BROKEN
                 break;
+
         }
     },
 
@@ -75,6 +76,10 @@ var Manager = cc.Scene.extend({
             case enumKeyCodes.KEY_Right:
             case enumKeyCodes.KEY_D:
                 t.gameLayer.getChildByTag(TagOfLayer.gameplay).planktonObject.movingRight = false;
+                break;
+            case enumKeyCodes.KEY_C:
+                t.gameLayer.getChildByTag(TagOfLayer.gameplay).planktonObject.isCheat =
+                    !t.gameLayer.getChildByTag(TagOfLayer.gameplay).planktonObject.isCheat;
                 break;
         }
     }

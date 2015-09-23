@@ -63,7 +63,9 @@ var GameplayLayer = cc.Layer.extend({
         for(i=0; i<7; i++)this.addChild(new Coral(i*175,25,0.75));
         for(i=0; i<5; i++)this.addChild(new Seaweed(i*200,0,1));
 
-        this.Level2();
+        currentSpeed = 5;
+
+        this.Level1();
 
         //create plankton object/sprite
         this.planktonObject = new Plankton(600,400);
@@ -158,9 +160,22 @@ var GameplayLayer = cc.Layer.extend({
             //run action on whale
             this.whaleSprite.runAction(new cc.Sequence(follow));
         }
+
+        var p = this.planktonObject;
+        if(p.distanceMovedAbsolute > 25000 && !p.scene2Gen)
+        {
+            this.Level2();
+            p.scene2Gen = true;
+        }
+        else if(p.distanceMovedAbsolute > 50000 && !p.scene3Gen)
+        {
+            this.Level3();
+            p.scene3Gen = true;
+        }
+
     },
 
-    Level1: function(dt){
+    Level1: function(){
         currentSpeed = 7;
         //generate obstacles and collectibles
         collectibles = new Array();
@@ -199,7 +214,7 @@ var GameplayLayer = cc.Layer.extend({
         }
     },
 
-    Level2: function(dt){
+    Level2: function(){
         currentSpeed = 7;
         //generate obstacles and collectibles
         collectibles = new Array();
@@ -235,6 +250,35 @@ var GameplayLayer = cc.Layer.extend({
             obstacle.x = Math.random() * 800 + 1100 * i     + 2000; obstacle.y = 50 + Math.random() * 800;
             obstacle.setScale(1, null);
             obstacles.push(obstacle);
+        }
+    },
+    Level3: function(){
+        obstacles = new Array();
+        var limit = 25000;
+        var currentDistance = 1200;
+        var spacing = 800;
+        while(currentDistance < limit)
+        {
+            var randSpace = Math.random()*200;
+            var xPos = currentDistance;
+            var spaceIndex = Math.floor(Math.random()*8);
+
+            for(var i=0; i<8; i++)
+            {
+                if(spaceIndex != i)
+                {
+                    var obstacle = new Obstacle2(200, 200);
+                    this.addChild(obstacle);
+
+                    obstacle.x = xPos+randSpace;
+                    obstacle.y = obstacle.height/2 + obstacle.height * i;
+
+                    obstacle.setScale(1, null);
+                    obstacles.push(obstacle);
+                }
+            }
+
+            currentDistance += spacing+randSpace;
         }
     }
 

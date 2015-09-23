@@ -13,6 +13,11 @@ var Plankton = cc.Sprite.extend({
         this.movingLeft = false;
         this.movingRight = false;
         this.distanceMoved = 0;
+        this.distanceMovedAbsolute = 0;
+
+        this.scene2Gen = false;
+        this.scene3Gen = false;
+        this.isCheat = false;
 
         this.scheduleUpdate();
     },
@@ -20,7 +25,8 @@ var Plankton = cc.Sprite.extend({
     update:function(dt) {
         this.checkCollectibleCollisions();
         this.move();
-        this.distanceMoved+=dt * 2;
+        this.distanceMoved+=dt*2;
+        this.distanceMovedAbsolute+=currentSpeed;
         this.getParent().getParent().getChildByTag(TagOfLayer.hud).updateDistance(this.getPositionX() - 10);
     },
 
@@ -49,7 +55,10 @@ var Plankton = cc.Sprite.extend({
             this.setPositionY(temp.height/2);
         }
 
-        this.checkObstacleCollisions();
+        if(!this.isCheat){
+            this.checkObstacleCollisions();
+        }
+
 
     },
 
