@@ -90,6 +90,7 @@ var Plankton = cc.Sprite.extend({
         this.checkCollectibleCollisions();
         this.move();
         this.distanceMoved+=dt * 2;
+        this.getParent().getParent().getChildByTag(TagOfLayer.hud).updateDistance(this.getPositionX() - 10);
     },
 
     move:function(){
