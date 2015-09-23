@@ -55,6 +55,15 @@ var Manager = cc.Scene.extend({
                 //cc.director.resume();
                 //cc.director.pushScene(new PauseScene()); BROKEN
                 break;
+            case enumKeyCodes.KEY_F1:
+                t.gameLayer.getChildByTag(TagOfLayer.gameplay).planktonObject.distanceMovedAbsolute = 0;
+                break;
+            case enumKeyCodes.KEY_F2:
+                t.gameLayer.getChildByTag(TagOfLayer.gameplay).planktonObject.distanceMovedAbsolute = 23000;
+                break;
+            case enumKeyCodes.KEY_F3:
+                t.gameLayer.getChildByTag(TagOfLayer.gameplay).planktonObject.distanceMovedAbsolute = 48000;
+                break;
 
         }
     },

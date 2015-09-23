@@ -90,11 +90,23 @@ var GameplayLayer = cc.Layer.extend({
         var p = this.planktonObject;
         if(p.distanceMovedAbsolute > 25000 && !p.scene2Gen)
         {
+            for(var index = 0; index < obstacles.length; index++){
+                obstacles[index].setPositionY(5000);
+            }
+            for(var index = 0; index < collectibles.length; index++){
+                collectibles[index].setPositionY(5000);
+            }
             this.Level2();
             p.scene2Gen = true;
         }
         else if(p.distanceMovedAbsolute > 50000 && !p.scene3Gen)
         {
+            for(var index = 0; index < obstacles.length; index++){
+                obstacles[index].setPositionY(5000);
+            }
+            for(var index = 0; index < collectibles.length; index++){
+                collectibles[index].setPositionY(5000);
+            }
             this.Level3();
             p.scene3Gen = true;
         }
